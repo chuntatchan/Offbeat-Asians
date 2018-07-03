@@ -150,6 +150,7 @@ public class PlayerControllerFighting : MonoBehaviour
     private void displayState0UI()
     {
         print("displayState0UI");
+		overlay.SetActive (false);
         button[0].sprite = FindIcon("blank");
         button[1].sprite = FindIcon("attack");
         button[2].sprite = FindIcon("defend");
@@ -178,7 +179,7 @@ public class PlayerControllerFighting : MonoBehaviour
         overlay_button[0].sprite = FindIcon("return");
         for (int i = 1; i < overlay_button.Length; i++)
         {
-            overlay_button[i].sprite = currentSkillToBeDealt.getSkillIconSprite();
+			overlay_button [i].sprite = FindIcon ("target");
         }
     }
 
