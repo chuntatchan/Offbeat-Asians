@@ -12,11 +12,6 @@ public class WeaponStats : MonoBehaviour
     [SerializeField]
     private Skill[] weaponAbilities;
 
-    public Skill weaponSkill(int i)
-    {
-        return weaponAbilities[i];
-    }
-
     public int numAbilities()
     {
         return weaponAbilities.Length;

@@ -54,6 +54,7 @@ public class CharacterStats : MonoBehaviour
         if (health < 1)
         {
             _isDead = true;
+			hpSlider.fillRect.gameObject.SetActive (false);
         }
     }
 
@@ -81,4 +82,9 @@ public class CharacterStats : MonoBehaviour
     {
         characterAnimator.SetBool("isWalking", true);
     }
+
+	public GameObject GetHPSlider() {
+		return hpSlider.gameObject;
+	}
+
 }

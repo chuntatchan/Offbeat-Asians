@@ -7,7 +7,7 @@ public class Skill : MonoBehaviour
 {
 
     [SerializeField]
-    private string skillName;
+    private string skillDescription;
     [SerializeField]
     private int maxDamage, numRolls;
 
@@ -33,5 +33,9 @@ public class Skill : MonoBehaviour
     {
         return skillIcon.GetSprite();
     }
+
+	public string getDescription() {
+		return skillDescription;
+	}
 
 }

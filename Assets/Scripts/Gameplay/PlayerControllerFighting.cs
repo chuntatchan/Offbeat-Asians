@@ -28,6 +28,8 @@ public class PlayerControllerFighting : MonoBehaviour
     private Skill currentSkillToBeDealt;
     private bool isEnemy;
 
+	public GameObject currentPlayerPointer;
+
 
     // Use this for initialization
     void Start()
@@ -42,13 +44,17 @@ public class PlayerControllerFighting : MonoBehaviour
         turnOrder = sortToSpeed(allCharacters);
         //Set currentCharacter to turnOrder[currentTurnCounter]
         currentCharacter = turnOrder[currentTurnCounter];
-        if (currentCharacter.gameObject.tag == "Enemy")
+		if (currentCharacter.gameObject.tag == "Enemy")
         {
             isEnemy = true;
         }
         //Start Game (Animation Stuff?)
 
     }
+
+	void Update() {
+		currentPlayerPointer.transform.position = new Vector3 (currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider ().transform.position.y + (Mathf.PingPong (Time.time/2, 0.6f) + 4.1f), currentCharacter.GetHPSlider ().transform.position.z);
+	}
 
     void changeUI()
     {
@@ -147,6 +153,33 @@ public class PlayerControllerFighting : MonoBehaviour
         }
     }
 
+	public void onMouseHoverButton(int i) {
+		if (currentStateCounter == 0) {
+			if (i == 1) {
+				tbox.text = "Attack";
+			} else if (i == 2) {
+				tbox.text = "Defend";
+			} else if (i == 3) {
+				tbox.text = "Bag";
+			}
+		} else if (currentStateCounter == 1) {
+			if (i == 0) {
+				tbox.text = "Return";
+			} else {
+				tbox.text = currentCharacter.GetWeapon ().weaponAbility (i).getDescription ();
+			}
+		} else if (currentStateCounter == 2) {
+			
+		} else if (currentStateCounter == 3) {
+		} else if (currentStateCounter == 4) {
+		}
+	}
+
+	public void onMouseExit() {
+		tbox.text = "";
+	}
+
+
     private void displayState0UI()
     {
         print("displayState0UI");
@@ -209,6 +242,7 @@ public class PlayerControllerFighting : MonoBehaviour
 
     private void setUITo(int i)
     {
+		tbox.text = "";
         currentStateCounter = i;
         changeUI();
     }
@@ -247,9 +281,7 @@ public class PlayerControllerFighting : MonoBehaviour
         }
         return input;
     }
-
-
-
+		
     public Sprite FindIcon(string _name)
     {
         if (_name != "")
