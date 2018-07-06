@@ -31,6 +31,11 @@ public class CharacterStats : MonoBehaviour
         characterAnimator.SetTrigger("attack");
     }
 
+    public void SetWalkingAnim(bool state)
+    {
+        characterAnimator.SetBool("isWalking", state);
+    }
+
     public void SetSpeed(int i)
     {
         speed = i;

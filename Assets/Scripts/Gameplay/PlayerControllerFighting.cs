@@ -28,7 +28,7 @@ public class PlayerControllerFighting : MonoBehaviour
     private Skill currentSkillToBeDealt;
     private bool isEnemy;
 
-	public GameObject currentPlayerPointer;
+    public GameObject currentPlayerPointer;
 
 
     // Use this for initialization
@@ -40,24 +40,28 @@ public class PlayerControllerFighting : MonoBehaviour
         overlay.SetActive(false);
         isButtonActive = new bool[button.Length];
         displayState0UI();
-		continueButton.SetActive (false);
+        continueButton.SetActive(false);
         //Sort allCharacters to turnOrder.
         turnOrder = sortToSpeed(allCharacters);
         //Set currentCharacter to turnOrder[currentTurnCounter]
         currentCharacter = turnOrder[currentTurnCounter];
-		if (currentCharacter.gameObject.tag == "Enemy") {
-			isEnemy = true;
-		} else {
-			isEnemy = false;
-		}
+        if (currentCharacter.gameObject.tag == "Enemy")
+        {
+            isEnemy = true;
+        }
+        else
+        {
+            isEnemy = false;
+        }
         //Start Game (Animation Stuff?)
 
     }
 
-	void Update() {
-		disableBlankButtons ();
-		currentPlayerPointer.transform.position = new Vector3 (currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider ().transform.position.y + (Mathf.PingPong (Time.time/2, 0.6f) + 4.1f), currentCharacter.GetHPSlider ().transform.position.z);
-	}
+    void Update()
+    {
+        disableBlankButtons();
+        currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider().transform.position.y + (Mathf.PingPong(Time.time / 2, 0.6f) + 4.1f), currentCharacter.GetHPSlider().transform.position.z);
+    }
 
     void changeUI()
     {
@@ -108,90 +112,131 @@ public class PlayerControllerFighting : MonoBehaviour
 
     public void buttonClicked(int i)
     {
-		if (isButtonActive [i] == false) {
-			return;
-		} else {
-			if (currentStateCounter == 0) {
-				if (i != 0) {
-					if (i == 1) {
-						setUITo (i);
-					}
-				}
-			} else if (currentStateCounter == 1) {
-				if (i == 0) {
-					setUITo (i);
-				} else {
-					//Deal damage to corresponding character
-					currentSkillToBeDealt = currentCharacter.GetWeapon ().weaponAbility (i);
-					setUITo (2);
-				}
-			} else if (currentStateCounter == 2) {
-				if (i == 0) {
-					setUITo (i+1);
-				} else {
-					currentCharacter.attackAnimation ();
-					enemies [i - 1].takeDamage (currentSkillToBeDealt.getDamage ());
-					currentSkillToBeDealt = null;
-					if (enemies [i - 1].isDead ()) {
-						enemies [i - 1].deathAnimation ();
-					}
-					startNextTurn ();
-				}
-			} else if (currentStateCounter == 3) {
+        if (isButtonActive[i] == false)
+        {
+            return;
+        }
+        else
+        {
+            if (currentStateCounter == 0)
+            {
+                if (i != 0)
+                {
+                    if (i == 1)
+                    {
+                        setUITo(i);
+                    }
+                }
+            }
+            else if (currentStateCounter == 1)
+            {
+                if (i == 0)
+                {
+                    setUITo(i);
+                }
+                else
+                {
+                    //Deal damage to corresponding character
+                    currentSkillToBeDealt = currentCharacter.GetWeapon().weaponAbility(i);
+                    setUITo(2);
+                }
+            }
+            else if (currentStateCounter == 2)
+            {
+                if (i == 0)
+                {
+                    setUITo(i + 1);
+                }
+                else
+                {
+                    currentCharacter.attackAnimation();
+                    enemies[i - 1].takeDamage(currentSkillToBeDealt.getDamage());
+                    currentSkillToBeDealt = null;
+                    if (enemies[i - 1].isDead())
+                    {
+                        enemies[i - 1].deathAnimation();
+                    }
+                    startNextTurn();
+                }
+            }
+            else if (currentStateCounter == 3)
+            {
 
-			} else if (currentStateCounter == 4) {
+            }
+            else if (currentStateCounter == 4)
+            {
 
-			}
-		}
+            }
+        }
     }
 
-	public void onMouseHoverButton(int i) {
-		if (currentStateCounter == 0) {
-			if (i == 1) {
-				tbox.text = "Attack";
-			} else if (i == 2) {
-				tbox.text = "Defend";
-			} else if (i == 3) {
-				tbox.text = "Bag";
-			}
-		} else if (currentStateCounter == 1) {
-			if (i == 0) {
-				tbox.text = "Return";
-			} else {
-				if (currentCharacter.GetWeapon ().numAbilities() > i) {
-					tbox.text = currentCharacter.GetWeapon ().weaponAbility (i).getDescription ();
-				}
-			}
-		} else if (currentStateCounter == 2) {
-			
-		} else if (currentStateCounter == 3) {
-		} else if (currentStateCounter == 4) {
-		}
-	}
+    public void onMouseHoverButton(int i)
+    {
+        if (currentStateCounter == 0)
+        {
+            if (i == 1)
+            {
+                tbox.text = "Attack";
+            }
+            else if (i == 2)
+            {
+                tbox.text = "Defend";
+            }
+            else if (i == 3)
+            {
+                tbox.text = "Bag";
+            }
+        }
+        else if (currentStateCounter == 1)
+        {
+            if (i == 0)
+            {
+                tbox.text = "Return";
+            }
+            else
+            {
+                if (currentCharacter.GetWeapon().numAbilities() > i)
+                {
+                    tbox.text = currentCharacter.GetWeapon().weaponAbility(i).getDescription();
+                }
+            }
+        }
+        else if (currentStateCounter == 2)
+        {
 
-	public void onMouseExit() {
-		tbox.text = "";
-	}
+        }
+        else if (currentStateCounter == 3)
+        {
+        }
+        else if (currentStateCounter == 4)
+        {
+        }
+    }
+
+    public void onMouseExit()
+    {
+        tbox.text = "";
+    }
 
 
     private void displayState0UI()
     {
         print("displayState0UI");
-		overlay.SetActive (false);
+        overlay.SetActive(false);
         button[0].sprite = FindIcon("blank");
         button[1].sprite = FindIcon("attack");
         button[2].sprite = FindIcon("blank"); 	//TBA - SUPERS
-        button[3].sprite = FindIcon ("blank"); 	//TBA - Consumables
+        button[3].sprite = FindIcon("blank"); 	//TBA - Consumables
     }
 
     private void displayState1UI()
     {
         print("displayState1UI");
-		overlay.SetActive (false);
+        overlay.SetActive(false);
         button[0].sprite = FindIcon("return");
         for (int i = 1; i <= currentCharacter.GetWeapon().numAbilities(); i++)
         {
-			button[i].sprite = currentCharacter.GetWeapon().weaponAbility(i).getSkillIcon().GetSprite();
+            button[i].sprite = currentCharacter.GetWeapon().weaponAbility(i).getSkillIcon().GetSprite();
         }
         for (int i = currentCharacter.GetWeapon().numAbilities() + 1; i < button.Length; i++)
         {
@@ -205,13 +250,17 @@ public class PlayerControllerFighting : MonoBehaviour
         print("displayState2UI");
         overlay.SetActive(true);
         overlay_button[0].sprite = FindIcon("return");
-		for (int i = 1; i < overlay_button.Length; i++) {
-			if (enemies [i - 1].isDead ()) {
-				overlay_button [i].sprite = FindIcon ("blank");
-			} else {
-				overlay_button [i].sprite = FindIcon ("target");
-			}
-		}
+        for (int i = 1; i < overlay_button.Length; i++)
+        {
+            if (enemies[i - 1].isDead())
+            {
+                overlay_button[i].sprite = FindIcon("blank");
+            }
+            else
+            {
+                overlay_button[i].sprite = FindIcon("target");
+            }
+        }
     }
 
 
@@ -225,116 +274,166 @@ public class PlayerControllerFighting : MonoBehaviour
 
     private void disableBlankButtons()
     {
-        for (int i = 0; i < button.Length; i++)
+        if (currentStateCounter == 2)
         {
-            if (button[i].sprite != FindIcon("blank"))
+            for (int i = 0; i < overlay_button.Length; i++)
             {
-                isButtonActive[i] = true;
-            }
-            else
-            {
-                isButtonActive[i] = false;
+                if (overlay_button[i].sprite != FindIcon("blank"))
+                {
+                    isButtonActive[i] = true;
+                }
+                else
+                {
+                    isButtonActive[i] = false;
+                }
             }
         }
-		for (int i = 0; i < overlay_button.Length; i++) {
-			if (overlay_button [i].sprite != FindIcon ("blank")) {
-				isButtonActive [i] = true;
-			} else {
-				isButtonActive [i] = false;
-			}
-		}
+        else
+        {
+
+            for (int i = 0; i < button.Length; i++)
+            {
+                if (button[i].sprite != FindIcon("blank"))
+                {
+                    isButtonActive[i] = true;
+                }
+                else
+                {
+                    isButtonActive[i] = false;
+                }
+            }
+        }
     }
 
     private void setUITo(int i)
     {
-		tbox.text = "";
+        tbox.text = "";
         currentStateCounter = i;
         changeUI();
     }
 
     private void startNextTurn()
     {
-		bool playersAllDead = true;
-		for (int i = 0; i < players.Length; i++) {
-			if (!players [i].isDead ()) {
-				playersAllDead = false;
-			}
-		}
+        bool playersAllDead = true;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (!players[i].isDead())
+            {
+                playersAllDead = false;
+            }
+        }
 
-		if (playersAllDead) {					//PLAYERS ALL DEAD || GAME OVER
-			print ("Game Over");
+        if (playersAllDead)
+        {                   //PLAYERS ALL DEAD || GAME OVER
+            print("Game Over");
 
 
-		} else {
-			
-			bool enemiesAllDead = true;
-			for (int i = 0; i < enemies.Length; i++) {
-				if (!enemies [i].isDead ()) {
-					enemiesAllDead = false;
-				}
-			}
+        }
+        else
+        {
 
-			if (enemiesAllDead) {				//ENEMIES ALL DEAD || WIN BATTLE
-				print ("You win!");			
-				spawnContinueButton ();
+            bool enemiesAllDead = true;
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                if (!enemies[i].isDead())
+                {
+                    enemiesAllDead = false;
+                }
+            }
 
-			} else {
-				overlay.SetActive (false);
-				currentStateCounter = 0;
-				currentTurnCounter = (currentTurnCounter + 1) % allCharacters.Length;
-				currentCharacter = turnOrder [currentTurnCounter];
-				if (currentCharacter.isDead ()) {
-					startNextTurn ();
-				} else {
-					if (currentCharacter.gameObject.tag == "Enemy") {
-						isEnemy = true;
-						overlay.SetActive (false);
-						for (int i = 0; i < button.Length; i++) {
-							button [i].sprite = FindIcon ("blank");
-						}
-						StartCoroutine (startEnemyTurn ());
-					} else {
-						isEnemy = false;
-						displayState0UI ();
-					}
-				}
-			}
-		}
+            if (enemiesAllDead)
+            {               //ENEMIES ALL DEAD || WIN BATTLE
+                print("You win!");
+                spawnContinueButton();
+
+            }
+            else
+            {
+                overlay.SetActive(false);
+                currentStateCounter = 0;
+                currentTurnCounter = (currentTurnCounter + 1) % allCharacters.Length;
+                currentCharacter = turnOrder[currentTurnCounter];
+                if (currentCharacter.isDead())
+                {
+                    startNextTurn();
+                }
+                else
+                {
+                    if (currentCharacter.gameObject.tag == "Enemy")
+                    {
+                        isEnemy = true;
+                        overlay.SetActive(false);
+                        for (int i = 0; i < button.Length; i++)
+                        {
+                            button[i].sprite = FindIcon("blank");
+                        }
+                        StartCoroutine(startEnemyTurn());
+                    }
+                    else
+                    {
+                        isEnemy = false;
+                        displayState0UI();
+                    }
+                }
+            }
+        }
     }
 
-	private void spawnContinueButton() {
-		continueButton.SetActive (true);
-	}
+    private void spawnContinueButton()
+    {
+        overlay.SetActive(false);
+        for (int i = 0; i < button.Length; i++)
+        {
+            button[i].sprite = FindIcon("blank");
+        }
+        continueButton.SetActive(true);
+    }
 
-	public void continueButtonClicked() {
-		StartCoroutine (startFightingToWalkingTransition());
-	}
+    public void continueButtonClicked()
+    {
+        continueButton.SetActive(false);
+        StartCoroutine(startFightingToWalkingTransition());
+    }
 
-	IEnumerator startFightingToWalkingTransition() {
-		Vector3 BGLayerStartPos = BGLayer.transform.position;
-		Vector3 enemyLayerStartPos = enemyLayer.transform.position;
-		for (int i = 0; i < 100; i++) {
-			BGLayer.transform.position = new Vector3 (BGLayerStartPos.x - i, BGLayerStartPos.y, BGLayerStartPos.z);
-			enemyLayer.transform.position = new Vector3 (enemyLayerStartPos.x - i, enemyLayerStartPos.y, enemyLayerStartPos.z);
-			yield return new WaitForEndOfFrame ();
-		}
-		yield return 0;
-	}
+    IEnumerator startFightingToWalkingTransition()
+    {
+        Vector3 BGLayerStartPos = BGLayer.transform.position;
+        Vector3 enemyLayerStartPos = enemyLayer.transform.position;
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].SetWalkingAnim(true);
+        }
+        while(BGLayer.transform.localPosition.x > -1279f)
+        {
+            BGLayer.transform.position = new Vector3(BGLayerStartPos.x - 0.04f, BGLayerStartPos.y, BGLayerStartPos.z);
+            enemyLayer.transform.position = new Vector3(enemyLayerStartPos.x - 0.04f, enemyLayerStartPos.y, enemyLayerStartPos.z);
+            BGLayerStartPos = BGLayer.transform.position;
+            enemyLayerStartPos = enemyLayer.transform.position;
+            yield return new WaitForEndOfFrame();
+        }
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].SetWalkingAnim(false);
+        }
+        yield return 0;
+    }
 
-	IEnumerator startEnemyTurn() {
-		yield return new WaitForSeconds (1f);
-		int playerToAtk = Random.Range (0, players.Length);
-		currentCharacter.AttackAnim ();
-		yield return new WaitForSeconds (0.75f);
-		players [playerToAtk].takeDamage (currentCharacter.GetWeapon().weaponAttack(0));
-		yield return new WaitForSeconds (0.5f);
-		if (players [playerToAtk].isDead ()) {
-			players [playerToAtk].deathAnimation ();
-		}
-		yield return new WaitForSeconds (0.5f);
-		startNextTurn ();
-		yield return 0;
-	}
+    IEnumerator startEnemyTurn()
+    {
+        yield return new WaitForSeconds(1f);
+        int playerToAtk = Random.Range(0, players.Length);
+        currentCharacter.AttackAnim();
+        yield return new WaitForSeconds(0.75f);
+        players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+        yield return new WaitForSeconds(0.5f);
+        if (players[playerToAtk].isDead())
+        {
+            players[playerToAtk].deathAnimation();
+        }
+        yield return new WaitForSeconds(0.25f);
+        startNextTurn();
+        yield return 0;
+    }
 
     private CharacterStats[] sortToSpeed(CharacterStats[] input)
     {
@@ -353,7 +452,7 @@ public class PlayerControllerFighting : MonoBehaviour
         }
         return input;
     }
-		
+
     public Sprite FindIcon(string _name)
     {
         if (_name != "")
