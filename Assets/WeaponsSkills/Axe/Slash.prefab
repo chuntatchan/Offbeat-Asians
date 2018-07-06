@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadb5675d753844ea9aae851b4025fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Slash
+  skillDescription: 'Slash: Damage 5'
   maxDamage: 5
   numRolls: 3
   procsBleeding: 1
