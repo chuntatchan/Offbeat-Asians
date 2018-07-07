@@ -7,7 +7,7 @@ public class CharacterStats : MonoBehaviour
 {
 
     [SerializeField]
-    private int health, armour, resistance, speed;
+    private int maxHealth, health, armour, resistance, speed;
     [SerializeField]
     private WeaponStats weaponEquiped;
     [SerializeField]
@@ -54,8 +54,14 @@ public class CharacterStats : MonoBehaviour
     public void takeDamage(int i)
     {
         health -= i;
-        hpSlider.value = health;
-        characterAnimator.SetTrigger("takingDamage");
+        if (hpSlider != null)
+        {
+            hpSlider.value = health;
+        }
+        if (characterAnimator != null)
+        {
+            characterAnimator.SetTrigger("takingDamage");
+        }
         if (health < 1)
         {
             _isDead = true;
@@ -91,5 +97,15 @@ public class CharacterStats : MonoBehaviour
 	public GameObject GetHPSlider() {
 		return hpSlider.gameObject;
 	}
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
 
 }

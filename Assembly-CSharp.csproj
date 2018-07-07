@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AnimationOffset.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CharacterStats.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\EventController.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PlayerControllerFighting.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Skill.cs" />
     <Compile Include="Assets\Scripts\Gameplay\WeaponStats.cs" />
@@ -326,6 +327,12 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.5f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="TextMeshPro-2017.3-1.0.56-Editor">
+      <HintPath>C:/Users/chunt/Documents/GitHub/Offbeat-Asians/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-1.0.56-Runtime">
+      <HintPath>C:/Users/chunt/Documents/GitHub/Offbeat-Asians/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/chunt/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -334,12 +341,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/chunt/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-1.0.56-Runtime">
-      <HintPath>C:/Users/chunt/Documents/GitHub/Offbeat-Asians/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-1.0.56-Editor">
-      <HintPath>C:/Users/chunt/Documents/GitHub/Offbeat-Asians/Assets/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-1.0.56-Editor.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.1.5f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

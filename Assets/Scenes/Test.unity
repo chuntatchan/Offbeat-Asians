@@ -1050,6 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
   health: 10
   armour: 5
   resistance: 5
@@ -1246,6 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
   health: 10
   armour: 5
   resistance: 5
@@ -1763,6 +1765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
   health: 20
   armour: 5
   resistance: 5
@@ -3687,6 +3690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 25
   health: 25
   armour: 7
   resistance: 5

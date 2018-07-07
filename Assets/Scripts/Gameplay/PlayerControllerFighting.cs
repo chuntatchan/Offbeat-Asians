@@ -60,7 +60,10 @@ public class PlayerControllerFighting : MonoBehaviour
     void Update()
     {
         disableBlankButtons();
-        currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider().transform.position.y + (Mathf.PingPong(Time.time / 2, 0.6f) + 4.1f), currentCharacter.GetHPSlider().transform.position.z);
+        if (currentPlayerPointer != null)
+        {
+            currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider().transform.position.y + (Mathf.PingPong(Time.time / 2, 0.6f) + 4.1f), currentCharacter.GetHPSlider().transform.position.z);
+        }
     }
 
     void changeUI()
