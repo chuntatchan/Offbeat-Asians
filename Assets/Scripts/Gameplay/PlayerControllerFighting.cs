@@ -41,10 +41,22 @@ public class PlayerControllerFighting : MonoBehaviour
         isButtonActive = new bool[button.Length];
         displayState0UI();
         continueButton.SetActive(false);
+		for (int i = 0; i < enemies.Length; i++) {
+			allCharacters [i] = enemies [i];
+		}
+		if (players [0] == null) {
+			players [0] = GameObject.Find ("Husband Stats").GetComponent<CharacterStats> ();
+			players [1] = GameObject.Find ("Artist Stats").GetComponent<CharacterStats> ();
+		}
+		for (int i = 0; i < players.Length; i++) {
+			allCharacters [i + 2] = players [i];
+		}
         //Sort allCharacters to turnOrder.
         turnOrder = sortToSpeed(allCharacters);
+
         //Set currentCharacter to turnOrder[currentTurnCounter]
         currentCharacter = turnOrder[currentTurnCounter];
+
         if (currentCharacter.gameObject.tag == "Enemy")
         {
             isEnemy = true;
@@ -408,8 +420,8 @@ public class PlayerControllerFighting : MonoBehaviour
         }
         while(BGLayer.transform.localPosition.x > -1279f)
         {
-            BGLayer.transform.position = new Vector3(BGLayerStartPos.x - 0.04f, BGLayerStartPos.y, BGLayerStartPos.z);
-            enemyLayer.transform.position = new Vector3(enemyLayerStartPos.x - 0.04f, enemyLayerStartPos.y, enemyLayerStartPos.z);
+            BGLayer.transform.position = new Vector3(BGLayerStartPos.x - 0.08f, BGLayerStartPos.y, BGLayerStartPos.z);
+            enemyLayer.transform.position = new Vector3(enemyLayerStartPos.x - 0.08f, enemyLayerStartPos.y, enemyLayerStartPos.z);
             BGLayerStartPos = BGLayer.transform.position;
             enemyLayerStartPos = enemyLayer.transform.position;
             yield return new WaitForEndOfFrame();

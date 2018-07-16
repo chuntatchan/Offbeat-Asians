@@ -59,6 +59,8 @@
      <Compile Include="Assets\Scripts\Gameplay\PlayerControllerFighting.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Skill.cs" />
      <Compile Include="Assets\Scripts\Gameplay\WeaponStats.cs" />
+     <Compile Include="Assets\Scripts\IntroSceneController.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\UI_Icon.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
