@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerFighting : MonoBehaviour
 {
@@ -41,16 +42,18 @@ public class PlayerControllerFighting : MonoBehaviour
         isButtonActive = new bool[button.Length];
         displayState0UI();
         continueButton.SetActive(false);
+
+        setPlayers();
+
 		for (int i = 0; i < enemies.Length; i++) {
 			allCharacters [i] = enemies [i];
 		}
-		if (players [0] == null) {
-			players [0] = GameObject.Find ("Husband Stats").GetComponent<CharacterStats> ();
-			players [1] = GameObject.Find ("Artist Stats").GetComponent<CharacterStats> ();
-		}
 		for (int i = 0; i < players.Length; i++) {
-			allCharacters [i + 2] = players [i];
+			allCharacters [i + enemies.Length] = players [i];
 		}
+
+        resizeAllCharacters(enemies.Length + players.Length, ref allCharacters);
+
         //Sort allCharacters to turnOrder.
         turnOrder = sortToSpeed(allCharacters);
 
@@ -67,6 +70,33 @@ public class PlayerControllerFighting : MonoBehaviour
         }
         //Start Game (Animation Stuff?)
 
+    }
+
+    private void resizeAllCharacters(int Size, ref CharacterStats[] Group)
+    {
+        CharacterStats[] temp = new CharacterStats[Size];
+        for (int c = 0; c < Size; c++)
+        {
+            temp[c] = Group[c];
+        }
+        Group = temp;
+
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        setPlayers();
+    }
+
+    private void setPlayers()
+    {
+        players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
+        players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
     }
 
     void Update()

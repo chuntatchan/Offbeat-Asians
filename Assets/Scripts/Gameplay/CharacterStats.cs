@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CharacterStats : MonoBehaviour
 {
 
     [SerializeField]
-    private int maxHealth, health, armour, resistance, speed;
+    private int maxHealth, health, armour, speed, charaNum;
     [SerializeField]
     private WeaponStats weaponEquiped;
-    [SerializeField]
-    private Image characterImage;
     [SerializeField]
     private Slider hpSlider;
     [SerializeField]
@@ -26,13 +25,25 @@ public class CharacterStats : MonoBehaviour
         hpSlider.value = health;
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        resetUI();
+    }
+
     public void AttackAnim()
     {
+        resetUI();
         characterAnimator.SetTrigger("attack");
     }
 
     public void SetWalkingAnim(bool state)
     {
+        resetUI();
         characterAnimator.SetBool("isWalking", state);
     }
 
@@ -53,6 +64,7 @@ public class CharacterStats : MonoBehaviour
 
     public void takeDamage(int i)
     {
+        resetUI();
         health -= i;
         if (hpSlider != null)
         {
@@ -106,6 +118,31 @@ public class CharacterStats : MonoBehaviour
     public int GetMaxHealth()
     {
         return maxHealth;
+    }
+
+    public void resetUI()
+    {
+        if (characterAnimator == null || hpSlider == null)
+        {
+            GameObject[] player = GameObject.FindGameObjectsWithTag("Player"+charaNum);
+            for (int j = 0; j < player.Length; j++)
+            {
+                if (player[j].GetComponent<Animator>() != null)
+                {
+                    characterAnimator = player[j].GetComponent<Animator>();
+                }
+                if (player[j].GetComponent<Slider>() != null)
+                {
+                    hpSlider = player[j].GetComponent<Slider>();
+                    hpSlider.maxValue = health;
+                    hpSlider.minValue = 0;
+                    hpSlider.value = health;
+                }
+            }
+        }
+
+
+
     }
 
 }
