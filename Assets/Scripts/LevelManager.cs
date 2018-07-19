@@ -5,17 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
-	public List<string> avaliableStages;
+    public List<string> transitionScenes;
 
 	private int currentStage;
 	[SerializeField]
 	private string[] allStages;
 
 	private void Start() {
+        DontDestroyOnLoad(gameObject);
 		currentStage = -1;
-		for (int i = 0; i < allStages.Length; i++) {
-			//allStages [i] =
-		}
 	}
 
 	private string GetNextScene() {

@@ -55,4 +55,3 @@ MonoBehaviour:
   isBreakable: 0
   weaponAbilities:
   - {fileID: 114337604009655042, guid: 8016f274e7f2846c6964861d4db67c73, type: 2}
-  - {fileID: 114337604009655042, guid: 2d73f8c7a602d4df1888cb0a2993f74e, type: 2}

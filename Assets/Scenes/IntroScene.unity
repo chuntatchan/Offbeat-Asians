@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1519,7 +1519,7 @@ GameObject:
   - component: {fileID: 703595543}
   m_Layer: 5
   m_Name: HPSlider (B)
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1640,7 +1640,7 @@ GameObject:
   - component: {fileID: 872821682}
   m_Layer: 5
   m_Name: Skeleton_B
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3061,9 +3061,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128647dfe88a4db5904b40583b4d969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avaliableStages: []
+  transitionScenes: []
   allStages:
-  - fight_0
+  - fight_1
   - 
 --- !u!224 &1369501064
 RectTransform:
@@ -3128,7 +3128,7 @@ GameObject:
   - component: {fileID: 1427186073}
   m_Layer: 5
   m_Name: HPSlider (R)
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3399,9 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4596dc366804d4fb984ffe839d723c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characters:
-  - {fileID: 1761786394}
-  - {fileID: 872821681}
+  characters: []
 --- !u!4 &1554488545
 Transform:
   m_ObjectHideFlags: 0
@@ -3499,8 +3497,8 @@ GameObject:
   - component: {fileID: 1698936882}
   - component: {fileID: 1698936881}
   m_Layer: 5
-  m_Name: 'Artist Stats '
-  m_TagString: Untagged
+  m_Name: Artist Stats
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3516,14 +3514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
-  health: 25
-  armour: 7
-  resistance: 5
-  speed: 3
+  maxHealth: 50
+  health: 50
+  armour: 0
+  speed: 10
+  charaNum: 2
   weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
     type: 2}
-  characterImage: {fileID: 872821685}
   hpSlider: {fileID: 703595543}
   characterAnimator: {fileID: 872821682}
 --- !u!224 &1698936882
@@ -3557,7 +3554,7 @@ GameObject:
   - component: {fileID: 1761786396}
   m_Layer: 5
   m_Name: Skeleton_R
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4051,7 +4048,7 @@ GameObject:
   - component: {fileID: 2085137194}
   m_Layer: 5
   m_Name: Husband Stats
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4067,14 +4064,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
-  armour: 5
-  resistance: 5
-  speed: 4
+  maxHealth: 50
+  health: 50
+  armour: 0
+  speed: 10
+  charaNum: 1
   weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
     type: 2}
-  characterImage: {fileID: 1761786397}
   hpSlider: {fileID: 1427186073}
   characterAnimator: {fileID: 1761786396}
 --- !u!224 &2085137195

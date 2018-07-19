@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillDescription: 'Axe Swipe: Damage 5'
-  maxDamage: 5
-  numRolls: 3
+  maxDamage: 4
+  numRolls: 1
   procsBleeding: 0
   accuracyModifier: 0
   skillIcon: {fileID: 114023579776994384, guid: 85e8528407b8c4b82b2c703547575802,
