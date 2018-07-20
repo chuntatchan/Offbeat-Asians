@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 625
-  m_MinSize: {x: 909, y: 342}
-  m_MaxSize: {x: 22004, y: 10000}
+  m_MinSize: {x: 917, y: 342}
+  m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 1241
+  controlID: 1410
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1242
+  controlID: 1371
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -418,8 +418,8 @@ MonoBehaviour:
     y: 0
     width: 204
     height: 625
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -452,9 +452,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d0790000
+    m_SelectedIDs: 9c100000
     m_LastClickedID: 0
-    m_ExpandedIDs: 1630feff6e40feff6e5dfeffa65ffeffe270feff1889feffc2d6feffaedafeffb2dafeff3ce6feffc8e6feff54eafeffc4eefeff90f2feffc4f8feffe2fafeffd2fcfeff04fffeff5ea6ffff5aabffffbaacffff88b1ffff8eb3ffffdab6ffff68beffff7ec6ffffaacbffff4ad6ffffbce6ffff12e8ffff88e8fffff2eaffff8aedffffa4f0ffff18f4ffff3af5fffff0fbffff00000000803f000044400000a6560000bc5700005e59000034690000be71000070780000
+    m_ExpandedIDs: 6007feffb808feff100dfeff1630feff6e40feff6e5dfeffa65ffeffe270feff1889feffc2d6feffaedafeffb2dafeff3ce6feffc8e6feff54eafeffc4eefeff90f2feffc4f8feffe2fafeffd2fcfeff04fffeff5ea6ffff5aabffffbaacffff88b1ffff8eb3ffffdab6ffff68beffff7ec6ffffaacbffff4ad6ffffbce6ffff12e8ffff88e8fffff2eaffff8aedffffa4f0ffff18f4ffff3af5fffff0fbffff00000000803f000044400000a6560000bc5700005e59000034690000be71000070780000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -540,7 +540,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Polygon Arsenal/Demo/Scenes/MainDemo
+    - Assets/Scenes
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
@@ -552,7 +552,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 44050000
     m_LastClickedID: 1348
-    m_ExpandedIDs: 0000000084090000020b0000b60c00008a110000ba1100001c3600006e780000d6780000ee780000f2790000
+    m_ExpandedIDs: 0000000084090000020b0000b60c00008a110000ba1100001c3600006e780000d6780000ee780000a4790000f2790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -577,24 +577,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 137.99805}
-    m_SelectedIDs: d0790000
-    m_LastClickedID: 31184
-    m_ExpandedIDs: 0000000084090000020b0000b60c00008a110000ba1100001c3600006e780000d6780000ee780000a4790000f2790000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 9c100000
+    m_LastClickedID: 4252
+    m_ExpandedIDs: 0000000084090000020b00003e0c0000b60c00008a110000ba1100001c360000d6780000a4790000f2790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: fight_1
+      m_OriginalName: fight_1
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 3454
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_SearchString: 
@@ -605,8 +605,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d0790000
-    m_LastClickedInstanceID: 31184
+    m_SelectedInstanceIDs: 9c100000
+    m_LastClickedInstanceID: 4252
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -653,8 +653,8 @@ MonoBehaviour:
     y: 0
     width: 277
     height: 625
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
