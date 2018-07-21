@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
 {
 
     [SerializeField]
-    private int maxHealth, health, armour, speed, charaNum;
+    private int maxHealth, health, armour, speed, finesse, charaNum;
     [SerializeField]
     private WeaponStats weaponEquiped;
     [SerializeField]
@@ -66,6 +66,11 @@ public class CharacterStats : MonoBehaviour
     {
         resetUI();
         health -= i;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
         if (hpSlider != null)
         {
             hpSlider.value = health;
