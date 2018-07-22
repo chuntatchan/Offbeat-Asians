@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1752,6 +1752,14 @@ MonoBehaviour:
   _buttons:
   - {fileID: 142765476}
   - {fileID: 1614992875}
+  weapons:
+  - type: 1
+    weaponPrefab: {fileID: 1248740477555678, guid: 5b076d17861aa43c28f3535e9507d940,
+      type: 2}
+  - type: 0
+    weaponPrefab: {fileID: 0}
+  - type: 0
+    weaponPrefab: {fileID: 0}
   eventTexts:
   - {fileID: 0}
   - {fileID: 0}

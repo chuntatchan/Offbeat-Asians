@@ -20,12 +20,22 @@ public class EventController : MonoBehaviour
     [SerializeField]
     private GameObject[] _buttons;
     
+	[SerializeField]
+	public weaponContainer[] weapons;
+
     [Space]
 
     [Header("Event")]
 
     [SerializeField]
     private EventText[] eventTexts;
+
+	[System.Serializable]
+	public struct weaponContainer
+	{
+		public WeaponType type;
+		public GameObject weaponPrefab;
+	}
 
 
     private int activeCharacter;

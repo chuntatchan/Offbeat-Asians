@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-
+	[SerializeField]
+	public string weaponName;
     [SerializeField]
     private string weaponType;
     [SerializeField]
@@ -14,7 +15,7 @@ public class WeaponStats : MonoBehaviour
 
     public int numAbilities()
     {
-        return weaponAbilities.Length;
+		return weaponAbilities.Length;
     }
 
     public Skill weaponAbility(int i)
@@ -27,4 +28,10 @@ public class WeaponStats : MonoBehaviour
         return weaponAbilities[i].getDamage();
     }
 
+	public WeaponType Wtype;
+
+}
+
+public enum WeaponType {
+	none, axe, sword, whatever
 }
