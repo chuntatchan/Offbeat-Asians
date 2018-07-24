@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1761,10 +1761,10 @@ MonoBehaviour:
   - type: 0
     weaponPrefab: {fileID: 0}
   eventTexts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114416049741484136, guid: 86a2c5b49490deb488038b4071d813d9, type: 2}
+  - {fileID: 114416049741484136, guid: e6a9c4db8ffdd0640a9e571c1122b6fc, type: 2}
+  - {fileID: 114416049741484136, guid: 33b091d0783468c47bb968b4bbdee897, type: 2}
+  - {fileID: 114416049741484136, guid: f3620df84154e3c45b4934f0ea6059ec, type: 2}
 --- !u!224 &775965982
 RectTransform:
   m_ObjectHideFlags: 0

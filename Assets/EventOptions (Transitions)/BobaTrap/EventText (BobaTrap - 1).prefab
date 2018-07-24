@@ -51,8 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventText: 
-  eventPrompt: 
+  eventText: You decide to take a peek inside. There's a fresh unopened boba milk
+    tea drink inside! It's almost as if someone left it here for you. You watch out
+    for traps. You notice a small fishing line connected to the drink, but you can't
+    seem to figure out what the other end is connected to.
+  eventPrompt: What do you do?
   events:
   - {fileID: 114972699725028792, guid: db1a60b6558e4f94aae0089d23eaaf8a, type: 2}
   - {fileID: 114972699725028792, guid: be560ab938c6c514bb804a96f295d8ef, type: 2}
