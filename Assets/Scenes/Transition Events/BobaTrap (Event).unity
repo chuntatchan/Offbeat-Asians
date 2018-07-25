@@ -494,7 +494,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: What do you do?
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 74e06d99c1657fc4abd33f20685ea9ff, type: 2}
@@ -561,13 +561,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 156652910}
-    characterCount: 15
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
@@ -1749,6 +1749,7 @@ MonoBehaviour:
   buttonsText:
   - {fileID: 1943082625}
   - {fileID: 2120599547}
+  picture: {fileID: 1928813746}
   _buttons:
   - {fileID: 142765476}
   - {fileID: 1614992875}
@@ -2812,10 +2813,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: There's a box on the ground. You decide to take a peek inside. There's a
-    fresh unopened boba milk tea drink inside! It's almost as if someone left it here
-    for you. You watch out for traps. You notice a small fishing line connected to
-    the drink, but you can't seem to figure out what the other end is connected to.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 74e06d99c1657fc4abd33f20685ea9ff, type: 2}
@@ -2842,7 +2840,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.35
+  m_fontSize: 47
   m_fontSizeBase: 47
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2882,13 +2880,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 50.342896}
   m_textInfo:
     textComponent: {fileID: 1187495422}
-    characterCount: 313
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 60
-    wordCount: 61
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 7
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
@@ -4739,14 +4737,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
+  m_Color: {r: 0.42352942, g: 0.42352942, b: 0.42352942, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: f84a49b53ce7344348b8b036723010a1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4940,9 +4938,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 8
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_textAlignment: 4098
   m_isAlignmentEnumConverted: 1
@@ -5576,9 +5574,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 8
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_textAlignment: 4098
   m_isAlignmentEnumConverted: 1

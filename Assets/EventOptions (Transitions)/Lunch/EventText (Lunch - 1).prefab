@@ -55,6 +55,6 @@ MonoBehaviour:
     make the decision on where to grab food.
   eventPrompt: You decide to go to...
   events:
-  - {fileID: 114972699725028792, guid: 9b81420941cce0546a194e91c1661940, type: 2}
-  - {fileID: 114972699725028792, guid: 9da40c4a39054354898e769ca3ae14c1, type: 2}
+  - {fileID: 114972699725028792, guid: 849e3c650df01044b85cf2ed1895a1dc, type: 2}
+  - {fileID: 114972699725028792, guid: 76be5aea9c8d8fa4e811b2f511a4f035, type: 2}
   _isContinue: 0

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventText: You reach your hand in. You were expecting the trap to spring and slash
     at your hand or something, but some annoying pop song plays instead. It gets stuck
-    in your head and you can't stop thinking about it.
+    in your head and you can't stop thinking about it. <color=red>-10HP</color>
   eventPrompt: At least you got the boba.
   events: []
   _isContinue: 1

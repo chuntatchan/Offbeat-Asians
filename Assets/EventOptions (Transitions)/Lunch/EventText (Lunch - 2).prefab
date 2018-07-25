@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventText: 
-  eventPrompt: 
+  eventText: You guys head out for pizza. Cheap, tasty, and customizable too!
+  eventPrompt: You gain 17HP.
   events: []
   _isContinue: 1

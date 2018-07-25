@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventText : MonoBehaviour {
+
+    [SerializeField]
+    private Sprite picture;
 
     [SerializeField]
     private string eventText, eventPrompt;
@@ -31,6 +35,11 @@ public class EventText : MonoBehaviour {
     public EventOptionStats GetEventOption(int i)
     {
         return events[i];
+    }
+
+    public Sprite GetPicture()
+    {
+        return picture;
     }
 
 }

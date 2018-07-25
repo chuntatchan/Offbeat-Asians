@@ -51,7 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventText: 
-  eventPrompt: 
+  eventText: You head towards the noodle shop. It's pretty hidden and small. You begin
+    to doubt your choice. You head in, take a seat, and begin looking at the menu.
+    It's all in Chinese. Your friends have no problem getting what they want. When
+    it comes to your turn, you just point at something random. You hope you got something
+    nice.
+  eventPrompt: It's HANDMADE noodles! You gain <color=green>+10 max HP</color> and
+    <color=green>heal 10HP</color>
   events: []
   _isContinue: 1

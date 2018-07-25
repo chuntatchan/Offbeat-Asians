@@ -18,6 +18,8 @@ public class EventController : MonoBehaviour
     [SerializeField]
     private TMP_Text[] buttonsText;
     [SerializeField]
+    private Image picture;
+    [SerializeField]
     private GameObject[] _buttons;
     
 	[SerializeField]
@@ -45,17 +47,30 @@ public class EventController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerStats[0] = GameObject.FindGameObjectWithTag("Player1").GetComponent<CharacterStats>();
-        playerStats[1] = GameObject.FindGameObjectWithTag("Player2").GetComponent<CharacterStats>();
+        if (GameObject.FindGameObjectWithTag("Player1") != null)
+        {
+            playerStats[0] = GameObject.FindGameObjectWithTag("Player1").GetComponent<CharacterStats>();
+        }
+        if (GameObject.FindGameObjectWithTag("Player2") != null)
+        {
+            playerStats[1] = GameObject.FindGameObjectWithTag("Player2").GetComponent<CharacterStats>();
+        }
 
         currentStateCounter = 0;
-        for (int i = 0; i < playerStats.Length; i++)
+        if (GameObject.FindGameObjectWithTag("Player1") != null || GameObject.FindGameObjectWithTag("Player2") != null)
         {
-            playerHPSliders[i].maxValue = playerStats[i].GetMaxHealth();
-            playerHPSliders[i].minValue = 0;
-            playerHPSliders[i].value = playerStats[i].GetHealth();
+            for (int i = 0; i < playerStats.Length; i++)
+            {
+                playerHPSliders[i].maxValue = playerStats[i].GetMaxHealth();
+                playerHPSliders[i].minValue = 0;
+                playerHPSliders[i].value = playerStats[i].GetHealth();
+            }
         }
-        //Change Slider's Text to be the actual player's name
+        if (eventTexts[0].GetPicture() != null)
+        {
+            picture.sprite = eventTexts[0].GetPicture();
+        }
+        setUITo(0);
     }
 
     public void onButtonClick(int i)
@@ -81,7 +96,7 @@ public class EventController : MonoBehaviour
             {
                 playerStats[activeCharacter].takeDamage(-eventTexts[i].GetEventOption(i).GetHPChange());
             }
-
+            currentStateCounter = 2;
         }
         else if (currentStateCounter == 2)
         {
@@ -106,16 +121,24 @@ public class EventController : MonoBehaviour
             }
         }
 
+        if (eventTexts[i].GetPicture() != null) {
+            picture.sprite = eventTexts[i].GetPicture();
+        }
+
         questionText.text = eventTexts[i].GetEventText();
         promptText.text = eventTexts[i].GetEventPrompt();
-        for (int j = 0; j < _buttons.Length; j++)
-        {
-            buttonsText[j].text = eventTexts[i].GetEventOption(j).GetOptionText();
-        }
         if (eventTexts[i].isContinue())
         {
             _buttons[1].SetActive(false);
             buttonsText[0].text = "Continue";
         }
+        else
+        {
+            for (int j = 0; j < _buttons.Length; j++)
+            {
+                buttonsText[j].text = eventTexts[i].GetEventOption(j).GetOptionText();
+            }
+        }
+
     }
 }
