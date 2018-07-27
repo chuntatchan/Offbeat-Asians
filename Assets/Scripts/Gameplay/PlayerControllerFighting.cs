@@ -31,10 +31,22 @@ public class PlayerControllerFighting : MonoBehaviour
 
     public GameObject currentPlayerPointer;
 
+    [Space]
+
+    [Header("Level Manager")]
+    [SerializeField]
+    private LevelManager levelManager;
+
 
     // Use this for initialization
     void Start()
     {
+
+        if (GameObject.FindGameObjectWithTag("levelManager") != null)
+        {
+            levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
+        }
+
         //Set currentTurnCounter & currentStateCounter to 0 & set all buttons except button[0] to active
         currentTurnCounter = 0;
         currentStateCounter = 0;
@@ -460,6 +472,13 @@ public class PlayerControllerFighting : MonoBehaviour
         {
             players[i].SetWalkingAnim(false);
         }
+
+
+        //Load Next Level
+        levelManager.LoadNextScene();
+
+
+
         yield return 0;
     }
 

@@ -36,6 +36,12 @@ public class EventController : MonoBehaviour
 
     private int currentStateCounter = 0;
 
+    [Space]
+
+    [Header("LevelManager")]
+    [SerializeField]
+    private LevelManager levelManager;
+
     // Use this for initialization
     void Start()
     {
@@ -46,6 +52,10 @@ public class EventController : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player2") != null)
         {
             playerStats[1] = GameObject.FindGameObjectWithTag("Player2").GetComponent<CharacterStats>();
+        }
+        if (GameObject.FindGameObjectWithTag("levelManager") != null)
+        {
+            levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
         }
 
         currentStateCounter = 0;
@@ -96,6 +106,7 @@ public class EventController : MonoBehaviour
         else if (currentStateCounter == 2)
         {
             //Transition to next Scene;
+            levelManager.LoadNextScene();
         }
     }
 
