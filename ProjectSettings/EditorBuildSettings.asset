@@ -11,16 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight Encounters/fight_1.unity
     guid: c813ad67416c44b75879d1da54d90fa5
-  - enabled: 1
-    path: Assets/Scenes/Fight Encounters/fight_2.unity
-    guid: 17ef2a3ad8d5ea6479f8eec8c9b62b27
-  - enabled: 1
-    path: Assets/Scenes/Fight Encounters/fight_3.unity
-    guid: 491da7687fed37f48a4762f6a28158b1
-  - enabled: 1
-    path: Assets/Scenes/Fight Encounters/fight_4.unity
-    guid: 437b8a73c0e15d94d9ee9cf16460dbd2
-  - enabled: 1
-    path: Assets/Scenes/Fight Encounters/fight_5.unity
-    guid: 108992c5ed6eb4a4db02b3693dff6cfc
   m_configObjects: {}

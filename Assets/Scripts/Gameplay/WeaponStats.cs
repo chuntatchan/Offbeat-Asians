@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-	[SerializeField]
-	public string weaponName;
-    [SerializeField]
-    private string weaponType;
-    [SerializeField]
-    private bool isBreakable;
+
+	public WeaponType _weapontype;
+
     [SerializeField]
     private Skill[] weaponAbilities;
+	[SerializeField]
+	private int damageReflect = 0;
+
 
     public int numAbilities()
     {
@@ -28,10 +28,8 @@ public class WeaponStats : MonoBehaviour
         return weaponAbilities[i].getDamage();
     }
 
-	public WeaponType Wtype;
-
 }
 
 public enum WeaponType {
-	none, axe, sword, whatever
+	none, speak, pillow, guitar, reportCard
 }

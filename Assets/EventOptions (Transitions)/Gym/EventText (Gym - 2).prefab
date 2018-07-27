@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventText: 'You decide to participate in the dodgeball game. You getting more flexible
-    and used to dodging, but '
+  picture: {fileID: 0}
+  eventText: You decide to participate in the dodgeball game. You getting more flexible
+    and used to dodging, but you get a little lightheaded. It doesn't seem to be fading
+    away.
   eventPrompt: You <color=green>gain 7 finesse</color> but lose <color=red>lose 10
     max HP</color>
   events: []

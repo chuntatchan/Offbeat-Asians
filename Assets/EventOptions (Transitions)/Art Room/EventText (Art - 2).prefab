@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  picture: {fileID: 0}
   eventText: You decide to take a nap. You don't make any trouble, but you didn't
     get any sleep either. You just wake up groggy, sore back, and numb left hand.
   eventPrompt: You <color=red>lose 15 max HP</color>.

@@ -51,8 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  picture: {fileID: 0}
   eventText: You decide to doodle. It's nothing spectacular. The teacher comes over
     and gives you a discontent look. You feel a bit self-conscious.
-  eventPrompt: You <color=red>lose 12HP and 4 finesse</color>.
+  eventPrompt: You <color=red>lose 11HP and 4 finesse</color>.
   events: []
   _isContinue: 1

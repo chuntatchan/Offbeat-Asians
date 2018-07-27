@@ -21,6 +21,8 @@ public class EventOptionStats: MonoBehaviour {
 
 	public WeaponType weaponToGive;
 
+	public ConsumableType consumableToGive;
+
     public int GetHPChange()
     {
         return HPChange;
@@ -77,6 +79,7 @@ public class MyScriptEditor : Editor
             myScript.armourChange = EditorGUILayout.IntSlider("Armour Change field:", myScript.armourChange, -10, 10);
         }
 		myScript.weaponToGive = (WeaponType)EditorGUILayout.EnumPopup ("WeaponToGive :", myScript.weaponToGive);
+		myScript.consumableToGive = (ConsumableType)EditorGUILayout.EnumPopup ("ConsumableToGive :", myScript.consumableToGive);
         myScript.optionText = EditorGUILayout.TextField("Option Text field:", myScript.optionText);
 
     }

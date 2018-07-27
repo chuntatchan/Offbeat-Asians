@@ -9,19 +9,22 @@ public class Skill : MonoBehaviour
     [SerializeField]
     private string skillDescription;
     [SerializeField]
-    private int maxDamage, numRolls;
-
+	private int damage;
     [SerializeField]
-    private bool procsBleeding;
+    private bool multiHit;
     [SerializeField]
-    private float accuracyModifier;
+    private float stunChance;
+	[SerializeField]
+	private int finesseBoost;
+	[SerializeField]
+	private int finesseBoostLength;
     [SerializeField]
     private UI_Icon skillIcon;
 
     public int getDamage()
     {
         //We can fix this later (dice roll like For The King?)
-        return maxDamage;
+        return damage;
     }
 
     public UI_Icon getSkillIcon()
@@ -36,6 +39,22 @@ public class Skill : MonoBehaviour
 
 	public string getDescription() {
 		return skillDescription;
+	}
+
+	public bool isMultiHit() {
+		return multiHit;
+	}
+
+	public float getStunChance() {
+		return stunChance;
+	}
+
+	public int getFinesseBoost() {
+		return finesseBoost;
+	}
+
+	public int getFinesseBoostLength() {
+		return finesseBoostLength;
 	}
 
 }

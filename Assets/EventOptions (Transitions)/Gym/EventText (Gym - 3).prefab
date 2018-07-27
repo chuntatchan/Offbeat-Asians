@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  picture: {fileID: 0}
   eventText: You decide to lift some weights. You bulk up a bit. You feel pretty good.
   eventPrompt: You <color=green>gain 15 max HP</color> but lose <color=red>lose 4
     finesse</color>

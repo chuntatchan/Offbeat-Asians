@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -524,9 +524,9 @@ MonoBehaviour:
   m_fontSize: 47
   m_fontSizeBase: 47
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 8
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_textAlignment: 258
   m_isAlignmentEnumConverted: 1
@@ -1753,14 +1753,7 @@ MonoBehaviour:
   _buttons:
   - {fileID: 142765476}
   - {fileID: 1614992875}
-  weapons:
-  - type: 1
-    weaponPrefab: {fileID: 1248740477555678, guid: 5b076d17861aa43c28f3535e9507d940,
-      type: 2}
-  - type: 0
-    weaponPrefab: {fileID: 0}
-  - type: 0
-    weaponPrefab: {fileID: 0}
+  weapons: {fileID: 114364628577595816, guid: 2e3e4966cad694d2882502ba6be8f75c, type: 2}
   eventTexts:
   - {fileID: 114416049741484136, guid: aba1d4d2483ec7f479fea93588871574, type: 2}
   - {fileID: 114416049741484136, guid: 6b9c47a91f2155b4ebd2dd2c9f667134, type: 2}

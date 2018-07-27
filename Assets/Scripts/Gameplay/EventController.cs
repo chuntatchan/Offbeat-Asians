@@ -23,7 +23,7 @@ public class EventController : MonoBehaviour
     private GameObject[] _buttons;
     
 	[SerializeField]
-	public weaponContainer[] weapons;
+	public WeaponList weapons;
 
     [Space]
 
@@ -31,14 +31,6 @@ public class EventController : MonoBehaviour
 
     [SerializeField]
     private EventText[] eventTexts;
-
-	[System.Serializable]
-	public struct weaponContainer
-	{
-		public WeaponType type;
-		public GameObject weaponPrefab;
-	}
-
 
     private int activeCharacter;
 
@@ -92,10 +84,13 @@ public class EventController : MonoBehaviour
             {
                 setUITo(3);
             }
-            if (eventTexts[i].GetEventOption(i).changeHP)
-            {
-                playerStats[activeCharacter].takeDamage(-eventTexts[i].GetEventOption(i).GetHPChange());
-            }
+			//Change Stats
+			if (playerStats [activeCharacter] != null) {
+				if (eventTexts [i].GetEventOption (i).changeHP) {
+					playerStats [activeCharacter].takeDamage (-eventTexts [i].GetEventOption (i).GetHPChange ());
+				}
+			}
+
             currentStateCounter = 2;
         }
         else if (currentStateCounter == 2)

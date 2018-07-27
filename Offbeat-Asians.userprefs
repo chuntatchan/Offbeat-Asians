@@ -1,16 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gameplay/EventController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gameplay/WeaponStats.cs">
     <Files>
-      <File FileName="Assets/Scripts/IntroSceneController.cs" Line="40" Column="33" />
-      <File FileName="Assets/Scripts/LevelManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/PlayerControllerFighting.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/CharacterStats.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/Skill.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI_Icon.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/WeaponStats.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AnimationOffset.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/EventController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Gameplay/EventController.cs" Line="33" Column="36" />
+      <File FileName="Assets/Scripts/TransitionScenes/EventText.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Gameplay/WeaponStats.cs" Line="9" Column="2" />
+      <File FileName="Assets/Scripts/Gameplay/Consumable.cs" Line="8" Column="2" />
+      <File FileName="Assets/Scripts/TransitionScenes/EventOptionStats.cs" Line="82" Column="46" />
+      <File FileName="Assets/Scripts/Gameplay/Skill.cs" Line="57" Column="29" />
+      <File FileName="Assets/Scripts/Gameplay/WeaponList.cs" Line="1" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
