@@ -68,7 +68,7 @@ public class PlayerControllerFighting : MonoBehaviour
 
         //Sort allCharacters to turnOrder.
         turnOrder = sortToSpeed(allCharacters);
-
+        
         //Set currentCharacter to turnOrder[currentTurnCounter]
         currentCharacter = turnOrder[currentTurnCounter];
 
@@ -109,6 +109,13 @@ public class PlayerControllerFighting : MonoBehaviour
     {
         players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
         players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
+
+        //Set Sliders
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].GetHPSlider().GetComponent<Slider>().maxValue = players[i].GetMaxHealth();
+            players[i].GetHPSlider().GetComponent<Slider>().value = players[i].GetHealth();
+        }
     }
 
     void Update()
@@ -307,16 +314,20 @@ public class PlayerControllerFighting : MonoBehaviour
         print("displayState2UI");
         overlay.SetActive(true);
         overlay_button[0].sprite = FindIcon("return");
-        for (int i = 1; i < overlay_button.Length; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
-            if (enemies[i - 1].isDead())
+            if (enemies[i].isDead())
             {
-                overlay_button[i].sprite = FindIcon("blank");
+                overlay_button[i + 1].sprite = FindIcon("blank");
             }
             else
             {
-                overlay_button[i].sprite = FindIcon("target");
+                overlay_button[i + 1].sprite = FindIcon("target");
             }
+        }
+        for (int i = enemies.Length + 1; i < overlay_button.Length; i++)
+        {
+            overlay_button[i].sprite = FindIcon("blank");
         }
     }
 
@@ -489,6 +500,7 @@ public class PlayerControllerFighting : MonoBehaviour
         currentCharacter.AttackAnim();
         yield return new WaitForSeconds(0.75f);
         players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+        print("currentPlayer dealt" + currentCharacter.GetWeapon().weaponAttack(0) + " damage.");
         yield return new WaitForSeconds(0.5f);
         if (players[playerToAtk].isDead())
         {
@@ -506,14 +518,17 @@ public class PlayerControllerFighting : MonoBehaviour
         {
             for (int sort = 0; sort < input.Length - 1; sort++)
             {
+               // print(input[sort].name + "comparing to " + input[sort + 1].name);
                 if (input[sort].GetSpeed() < input[sort + 1].GetSpeed())
                 {
+                   // print("swap: " + input[sort].name + " with " + input[sort+1].name);
                     temp = input[sort + 1];
                     input[sort + 1] = input[sort];
                     input[sort] = temp;
                 }
             }
         }
+        print("turnSorted");
         return input;
     }
 

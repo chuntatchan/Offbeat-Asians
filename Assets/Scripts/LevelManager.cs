@@ -14,7 +14,19 @@ public class LevelManager : MonoBehaviour {
 	private void Start() {
         DontDestroyOnLoad(gameObject);
 		currentStage = -1;
+        assignTransitionScenes();
 	}
+
+    private void assignTransitionScenes()
+    {
+        for (int i = 0; i < allStages.Length; i = i + 2)
+        {
+            int j = Random.Range(0, transitionScenes.Count);
+            allStages[i] = transitionScenes[j];
+            transitionScenes.RemoveAt(j);
+        }
+
+    }
 
 	private string GetNextScene() {
 		currentStage++;

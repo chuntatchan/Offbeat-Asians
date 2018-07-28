@@ -9,6 +9,48 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 89f2ca7c75ab3457c94be4a241c8e8fb
   - enabled: 1
+    path: Assets/Scenes/Fight Encounters/Boss.unity
+    guid: e4939476f148fb241b424818d91664eb
+  - enabled: 1
     path: Assets/Scenes/Fight Encounters/fight_1.unity
     guid: c813ad67416c44b75879d1da54d90fa5
+  - enabled: 1
+    path: Assets/Scenes/Fight Encounters/fight_2.unity
+    guid: 24ce221f5b65a1f4693832b49f0ff16d
+  - enabled: 1
+    path: Assets/Scenes/Fight Encounters/fight_3.unity
+    guid: adeb0cbbfd0d9e447a29b6c0bfa6d5fd
+  - enabled: 1
+    path: Assets/Scenes/Fight Encounters/fight_4.unity
+    guid: 1820d9c7cb048314cbf1b0cfaa9428fb
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/ArtRoom (Event).unity
+    guid: e0cd1e0e1f6242d43b2a3fc858f9e256
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/BobaTrap (Event).unity
+    guid: 559c27064f94a435492d7c88df25e00f
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Crush (Event).unity
+    guid: af4831004565c4565b0db89b4d74a63d
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/EmptyWallet (Event).unity
+    guid: a5b40ad6210924d49a8f425efce69708
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Gym (Event).unity
+    guid: 6c2eef7ac7757ce489b1a8f0664334e1
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Lunch (Event).unity
+    guid: 4fbe464757433fb46a3280818353093e
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/MusicRoom (Event).unity
+    guid: db3f3b95c22f9433c802afbc4eb45c03
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Pool (Event).unity
+    guid: b467c21340d78ed499141c40453d85e4
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Theatre (Event).unity
+    guid: 5a2c4833851124326bf0aa625d4aff65
+  - enabled: 1
+    path: Assets/Scenes/Transition Events/Thief (Event).unity
+    guid: 023bc170e3f7e421fa125cd0ae18540a
   m_configObjects: {}

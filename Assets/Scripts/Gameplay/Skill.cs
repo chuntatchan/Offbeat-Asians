@@ -11,6 +11,9 @@ public class Skill : MonoBehaviour
     [SerializeField]
 	private int damage;
     [SerializeField]
+    private bool isChargable;
+    private bool isChargedUp;
+    [SerializeField]
     private bool multiHit;
     [SerializeField]
     private float stunChance;
@@ -56,5 +59,22 @@ public class Skill : MonoBehaviour
 	public int getFinesseBoostLength() {
 		return finesseBoostLength;
 	}
+
+    public bool GetIsChargable()
+    {
+        return isChargable;
+    }
+
+    public bool GetIsChargedUp()
+    {
+        return isChargedUp;
+    }
+
+    public void SetIsChargedUp(bool state)
+    {
+        isChargedUp = state;
+    }
+
+
 
 }

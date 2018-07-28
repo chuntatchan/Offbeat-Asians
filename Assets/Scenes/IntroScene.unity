@@ -3061,18 +3061,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5128647dfe88a4db5904b40583b4d969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionScenes: []
+  transitionScenes:
+  - ArtRoom (Event)
+  - BobaTrap (Event)
+  - Crush (Event)
+  - EmptyWallet (Event)
+  - Gym (Event)
+  - Lunch (Event)
+  - MusicRoom (Event)
+  - Pool (Event)
+  - Theatre (Event)
+  - Thief (Event)
   allStages:
+  - 
   - fight_1
   - 
+  - fight_2
   - 
+  - fight_3
   - 
+  - fight_4
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Boss
 --- !u!224 &1369501064
 RectTransform:
   m_ObjectHideFlags: 0

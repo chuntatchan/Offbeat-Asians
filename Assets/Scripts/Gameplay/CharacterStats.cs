@@ -127,21 +127,24 @@ public class CharacterStats : MonoBehaviour
 
     public void resetUI()
     {
-        if (characterAnimator == null || hpSlider == null)
+        if (charaNum != 0)
         {
-            GameObject[] player = GameObject.FindGameObjectsWithTag("Player"+charaNum);
-            for (int j = 0; j < player.Length; j++)
+            if (characterAnimator == null || hpSlider == null)
             {
-                if (player[j].GetComponent<Animator>() != null)
+                GameObject[] player = GameObject.FindGameObjectsWithTag("Player" + charaNum);
+                for (int j = 0; j < player.Length; j++)
                 {
-                    characterAnimator = player[j].GetComponent<Animator>();
-                }
-                if (player[j].GetComponent<Slider>() != null)
-                {
-                    hpSlider = player[j].GetComponent<Slider>();
-                    hpSlider.maxValue = health;
-                    hpSlider.minValue = 0;
-                    hpSlider.value = health;
+                    if (player[j].GetComponent<Animator>() != null)
+                    {
+                        characterAnimator = player[j].GetComponent<Animator>();
+                    }
+                    if (player[j].GetComponent<Slider>() != null)
+                    {
+                        hpSlider = player[j].GetComponent<Slider>();
+                        hpSlider.maxValue = health;
+                        hpSlider.minValue = 0;
+                        hpSlider.value = health;
+                    }
                 }
             }
         }
