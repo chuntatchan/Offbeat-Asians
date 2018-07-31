@@ -1,0 +1,57 @@
+llt = left thigh (left leg top)
+llb = left calf (left leg bottom)
+
+rlt = right thigh (right leg top)
+rlb = right calf (right leg bottom)
+
+rs = right shoulder
+ra = right arm
+rhf = right hand front
+rhb = right hand back
+
+ls = left shoulder
+la = left arm
+lhf = left hand front
+lhb = left hand back
+
+----------
+
+emotion 27
+hat 26
+face 25
+hair 24
+haed 23
+
+right hand clothes 22
+right arm clothes 21
+right shoulder clothes 20 
+right hand 19
+right arm 18
+right shoulder 17
+
+body clothes  16
+body 15
+
+left hand clothes 14
+left arm clothes 13
+left shoulder clothes 12
+
+
+
+right calf clothes 11
+right thigh clothes 10
+right calf 9
+right thigh 8
+
+left calf clothes 7
+left thigh clothes 6
+left calf 5
+left thigh 4
+
+
+
+left hand 3
+left arm 2
+left shoulder 1
+
+backhair 0
