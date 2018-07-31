@@ -499,7 +499,27 @@ public class PlayerControllerFighting : MonoBehaviour
         int playerToAtk = Random.Range(0, players.Length);
         currentCharacter.AttackAnim();
         yield return new WaitForSeconds(0.75f);
-        players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+
+        //Damage Chargable
+
+        if (currentCharacter.GetWeapon().weaponAbility(0).GetIsChargable())
+        {
+            if (currentCharacter.GetWeapon().weaponAbility(0).GetIsChargedUp())
+            {
+                players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+                currentCharacter.GetWeapon().weaponAbility(0).SetIsChargedUp(false);
+            }
+            else
+            {
+                currentCharacter.GetWeapon().weaponAbility(0).SetIsChargedUp(true);
+            }
+        }
+        else
+        {
+            players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+        }
+
+
         print("currentPlayer dealt" + currentCharacter.GetWeapon().weaponAttack(0) + " damage.");
         yield return new WaitForSeconds(0.5f);
         if (players[playerToAtk].isDead())
