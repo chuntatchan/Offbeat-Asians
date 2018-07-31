@@ -68,6 +68,7 @@
      <Compile Include="Assets\Polygon Arsenal\Scripts\PolygonRotation.cs" />
      <Compile Include="Assets\Polygon Arsenal\Scripts\PolygonSoundSpawn.cs" />
      <Compile Include="Assets\Scripts\AnimationOffset.cs" />
+     <Compile Include="Assets\Scripts\DamagePopUp.cs" />
      <Compile Include="Assets\Scripts\Ending.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CharacterStats.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Consumable.cs" />

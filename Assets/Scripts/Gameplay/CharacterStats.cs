@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -13,8 +14,16 @@ public class CharacterStats : MonoBehaviour
     private WeaponStats weaponEquiped;
     [SerializeField]
     private Slider hpSlider;
+	[SerializeField]
+	private TMP_Text HPText;
     [SerializeField]
     private Animator characterAnimator;
+	[SerializeField]
+	private GameObject damagePopUpPrefab;
+	[SerializeField]
+	private Vector2 damagePopUpOffset;
+	[SerializeField]
+	private bool isEnemy;
 
     private bool _isDead;
 
@@ -75,10 +84,18 @@ public class CharacterStats : MonoBehaviour
         {
             hpSlider.value = health;
         }
+		if (HPText != null) {
+			HPText.text = health.ToString();
+		}
         if (characterAnimator != null)
         {
             characterAnimator.SetTrigger("takingDamage");
         }
+		if (damagePopUpPrefab != null) {
+			print ("spawnDamagePopUp");
+			GameObject temp = Instantiate (damagePopUpPrefab, new Vector3 (HPText.gameObject.transform.position.x + damagePopUpOffset.x, HPText.gameObject.transform.position.y + damagePopUpOffset.y, HPText.gameObject.transform.position.z), HPText.gameObject.transform.rotation);
+			temp.GetComponent<TMP_Text> ().text = i.ToString ();
+		}
         if (health < 1)
         {
             _isDead = true;
@@ -129,7 +146,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (charaNum != 0)
         {
-            if (characterAnimator == null || hpSlider == null)
+            if (characterAnimator == null || hpSlider == null || HPText == null)
             {
                 GameObject[] player = GameObject.FindGameObjectsWithTag("Player" + charaNum);
                 for (int j = 0; j < player.Length; j++)
@@ -145,6 +162,10 @@ public class CharacterStats : MonoBehaviour
                         hpSlider.minValue = 0;
                         hpSlider.value = health;
                     }
+					if (player [j].GetComponent<TMP_Text> () != null) {
+						HPText = player [j].GetComponent<TMP_Text> ();
+						HPText.text = health.ToString();
+					}
                 }
             }
         }

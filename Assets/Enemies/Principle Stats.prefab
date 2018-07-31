@@ -47,7 +47,12 @@ MonoBehaviour:
   weaponEquiped: {fileID: 114710963715982812, guid: c2dd34f6223594048a7d4b570afdd718,
     type: 2}
   hpSlider: {fileID: 0}
+  HPText: {fileID: 0}
   characterAnimator: {fileID: 0}
+  damagePopUpPrefab: {fileID: 1810992049378332, guid: b519d07823a7f4082900bef62e430561,
+    type: 2}
+  damagePopUpOffset: {x: 0, y: 4.5}
+  isEnemy: 1
 --- !u!224 &224042229377237646
 RectTransform:
   m_ObjectHideFlags: 1

@@ -20,7 +20,7 @@ public class WeaponStats : MonoBehaviour
 
     public Skill weaponAbility(int i)
     {
-        return weaponAbilities[i-1];
+        return weaponAbilities[i];
     }
 
     public int weaponAttack(int i)

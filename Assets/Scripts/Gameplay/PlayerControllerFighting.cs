@@ -201,7 +201,7 @@ public class PlayerControllerFighting : MonoBehaviour
                 else
                 {
                     //Deal damage to corresponding character
-                    currentSkillToBeDealt = currentCharacter.GetWeapon().weaponAbility(i);
+                    currentSkillToBeDealt = currentCharacter.GetWeapon().weaponAbility(i-1);
                     setUITo(2);
                 }
             }
@@ -259,10 +259,7 @@ public class PlayerControllerFighting : MonoBehaviour
             }
             else
             {
-                if (currentCharacter.GetWeapon().numAbilities() > i)
-                {
-                    tbox.text = currentCharacter.GetWeapon().weaponAbility(i).getDescription();
-                }
+				tbox.text = currentCharacter.GetWeapon().weaponAbility(i-1).getDescription();
             }
         }
         else if (currentStateCounter == 2)
@@ -300,7 +297,7 @@ public class PlayerControllerFighting : MonoBehaviour
         button[0].sprite = FindIcon("return");
         for (int i = 1; i <= currentCharacter.GetWeapon().numAbilities(); i++)
         {
-            button[i].sprite = currentCharacter.GetWeapon().weaponAbility(i).getSkillIcon().GetSprite();
+            button[i].sprite = currentCharacter.GetWeapon().weaponAbility(i-1).getSkillIcon().GetSprite();
         }
         for (int i = currentCharacter.GetWeapon().numAbilities() + 1; i < button.Length; i++)
         {
