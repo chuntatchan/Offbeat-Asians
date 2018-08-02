@@ -6,11 +6,13 @@ public class WeaponStats : MonoBehaviour
 {
 
 	public WeaponType _weapontype;
-
+	public string weaponDescription;
     [SerializeField]
     private Skill[] weaponAbilities;
 	[SerializeField]
 	private int damageReflect = 0;
+	[SerializeField]
+	private Sprite weaponIconForTransition;
 
 
     public int numAbilities()
@@ -27,6 +29,14 @@ public class WeaponStats : MonoBehaviour
     {
         return weaponAbilities[i].getDamage();
     }
+
+	public WeaponType GetWeaponType() {
+		return _weapontype;
+	}
+
+	public Sprite GetWeaponIconForTransition() {
+		return weaponIconForTransition;
+	}
 
 }
 

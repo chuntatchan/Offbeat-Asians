@@ -21,6 +21,9 @@ public class EventController : MonoBehaviour
     private Image picture;
     [SerializeField]
     private GameObject[] _buttons;
+	[SerializeField]
+	private WeaponExchanger _weaponExchanger;
+	private bool isWeaponExchangerActive;
     
 	[SerializeField]
 	public WeaponList weapons;
@@ -45,6 +48,8 @@ public class EventController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		_weaponExchanger.gameObject.SetActive (false);
+		isWeaponExchangerActive = false;
         if (GameObject.FindGameObjectWithTag("Player1") != null)
         {
             playerStats[0] = GameObject.FindGameObjectWithTag("Player1").GetComponent<CharacterStats>();
@@ -77,37 +82,56 @@ public class EventController : MonoBehaviour
 
     public void onButtonClick(int i)
     {
-
-        if (currentStateCounter == 0)
-        {
-            activeCharacter = i;
-            currentStateCounter = 1;
-            setUITo(1);
-        }
-        else if (currentStateCounter == 1)
-        {
-            if (i == 0)
-            {
-                setUITo(2);
-            }
-            else
-            {
-                setUITo(3);
-            }
-			//Change Stats
-			if (playerStats [activeCharacter] != null) {
-				if (eventTexts [i].GetEventOption (i).changeHP) {
-					playerStats [activeCharacter].takeDamage (-eventTexts [i].GetEventOption (i).GetHPChange ());
+		if (!isWeaponExchangerActive) {
+			if (currentStateCounter == 0) {
+				activeCharacter = i;
+				currentStateCounter = 1;
+				setUITo (1);
+			} else if (currentStateCounter == 1) {
+				if (i == 0) {
+					setUITo (2);
+				} else {
+					setUITo (3);
 				}
-			}
+				//Change Stats
+				if (playerStats [activeCharacter] != null) {
+					if (eventTexts [i].GetEventOption (i).changeHP) {
+						playerStats [activeCharacter].takeDamage (-eventTexts [i].GetEventOption (i).GetHPChange ());
+					}
+					if (eventTexts [i].GetEventOption (i).changeMaxHP) {
+						playerStats [activeCharacter].SetMaxHealth (eventTexts [i].GetEventOption (i).GetMaxHPChange ());
+					}
+					if (eventTexts [i].GetEventOption (i).changeFinesse) {
+						playerStats [activeCharacter].SetFinesse (playerStats [activeCharacter].GetFinesse () + eventTexts [i].GetEventOption (i).finesseChange);
+					}
+					if (eventTexts [i].GetEventOption (i).changeArmour) {
+						playerStats [activeCharacter].SetArmour (playerStats [activeCharacter].GetArmour () + eventTexts [i].GetEventOption (i).armourChange);
+					}
+					if (eventTexts [i].GetEventOption (i).weaponToGive != WeaponType.none) {
+						_weaponExchanger.gameObject.SetActive (true);
+						_weaponExchanger.SetWeaponToGive (weapons.GetWeapon(eventTexts [i].GetEventOption (i).weaponToGive));
+						isWeaponExchangerActive = true;
+					}
+				}
 
-            currentStateCounter = 2;
-        }
-        else if (currentStateCounter == 2)
-        {
-            //Transition to next Scene;
-            levelManager.LoadNextScene();
-        }
+				currentStateCounter = 2;
+			} else if (currentStateCounter == 2) {
+				//Transition to next Scene;
+				levelManager.LoadNextScene ();
+			}
+		} else {
+			if (i == 2) {
+				_weaponExchanger.gameObject.SetActive (false);
+				isWeaponExchangerActive = false;
+			} else {
+				WeaponStats tempWeapon = playerStats [i].GetWeapon ();
+				playerStats [i].SetWeapon(_weaponExchanger.GetWeaponToGive ());
+				_weaponExchanger.SetWeaponToGive(tempWeapon);
+				_weaponExchanger.SetCharacterCurrentWeaponText (playerStats[i].GetWeapon().GetWeaponType().ToString(), i);
+				_weaponExchanger.SetWeaponDescription (tempWeapon.weaponDescription);
+				_weaponExchanger.SetWeaponIcon (tempWeapon.GetWeaponIconForTransition());
+			}
+		}
     }
 
     private void setUITo(int i)

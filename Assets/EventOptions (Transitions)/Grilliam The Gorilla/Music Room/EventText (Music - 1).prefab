@@ -57,6 +57,6 @@ MonoBehaviour:
     the school bully.
   eventPrompt: You reach into your pocket and give him...
   events:
-  - {fileID: 114972699725028792, guid: 6b7bf7f11fd4d4ccc83be94148b12c67, type: 2}
-  - {fileID: 114972699725028792, guid: bffb79792edae4fa0a5ce49e55147159, type: 2}
+  - {fileID: 114972699725028792, guid: 55e5bf6ca074d47b9904f55a1b36ec3d, type: 2}
+  - {fileID: 114972699725028792, guid: 882606006f60243e2a9838d35128afbb, type: 2}
   _isContinue: 0

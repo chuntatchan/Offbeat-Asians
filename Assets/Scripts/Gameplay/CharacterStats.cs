@@ -66,6 +66,26 @@ public class CharacterStats : MonoBehaviour
         return speed;
     }
 
+	public void SetFinesse(int i)
+	{
+		finesse = i;
+	}
+
+	public int GetFinesse()
+	{
+		return finesse;
+	}
+
+	public void SetArmour(int i)
+	{
+		armour = i;
+	}
+
+	public int GetArmour()
+	{
+		return armour;
+	}
+
     public int weaponAttack(int i)
     {
         return weaponEquiped.weaponAttack(i);
@@ -108,6 +128,10 @@ public class CharacterStats : MonoBehaviour
         return weaponEquiped;
     }
 
+	public void SetWeapon(WeaponStats newWeapon) {
+		weaponEquiped = newWeapon;
+	}
+
     public bool isDead()
     {
         return _isDead;
@@ -141,6 +165,10 @@ public class CharacterStats : MonoBehaviour
     {
         return maxHealth;
     }
+
+	public void SetMaxHealth(int n_maxHeath) {
+		maxHealth = n_maxHeath;
+	}
 
     public void resetUI()
     {
