@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Transition Events/Theatre (Event).unity
+- path: Assets/Scenes/FightTest.unity
   isLoaded: 1
   isActive: 1

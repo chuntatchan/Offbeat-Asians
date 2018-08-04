@@ -23,6 +23,7 @@ public class EventOptionStats: MonoBehaviour {
 
 	public ConsumableType consumableToGive;
 
+
     public int GetHPChange()
     {
         return HPChange;
@@ -48,6 +49,16 @@ public class EventOptionStats: MonoBehaviour {
         return optionText;
     }
 
+	public WeaponType GetWeaponTypeToGive()
+	{
+		return weaponToGive;
+	}
+
+	public ConsumableType GetConsumableTypeToGive()
+	{
+		return consumableToGive;
+	}
+		
 }
 
 [CustomEditor(typeof(EventOptionStats))]

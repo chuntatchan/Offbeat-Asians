@@ -112,6 +112,9 @@ public class EventController : MonoBehaviour
 						_weaponExchanger.SetWeaponToGive (weapons.GetWeapon(eventTexts [i].GetEventOption (i).weaponToGive));
 						isWeaponExchangerActive = true;
 					}
+					if (eventTexts [i].GetEventOption (i).consumableToGive != ConsumableType.none) {
+						//Add Item to Bag
+					}
 				}
 
 				currentStateCounter = 2;
@@ -119,7 +122,7 @@ public class EventController : MonoBehaviour
 				//Transition to next Scene;
 				levelManager.LoadNextScene ();
 			}
-		} else {
+		} else { //WeaponExchanger Is Active
 			if (i == 2) {
 				_weaponExchanger.gameObject.SetActive (false);
 				isWeaponExchangerActive = false;

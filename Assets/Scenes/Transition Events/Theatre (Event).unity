@@ -2061,7 +2061,7 @@ MonoBehaviour:
   _buttons:
   - {fileID: 142765476}
   - {fileID: 1614992875}
-  _weaponExchanger: {fileID: 0}
+  _weaponExchanger: {fileID: 2017453144}
   weapons: {fileID: 114364628577595816, guid: 2e3e4966cad694d2882502ba6be8f75c, type: 2}
   eventTexts:
   - {fileID: 114416049741484136, guid: cd587a59402a54126b7b61ccdc89ab9f, type: 2}
@@ -6432,6 +6432,7 @@ MonoBehaviour:
   characterCurrentWeapon:
   - {fileID: 1038420071}
   - {fileID: 642180133}
+  weaponToGive: {fileID: 0}
 --- !u!1 &2042291038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6538,7 +6539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326.8, y: -0}
+  m_AnchoredPosition: {x: 326.8, y: 0}
   m_SizeDelta: {x: 302, y: 264.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058668105
