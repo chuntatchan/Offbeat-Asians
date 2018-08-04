@@ -31,6 +31,8 @@ public class PlayerControllerFighting : MonoBehaviour
 
     public GameObject currentPlayerPointer;
 
+    private bool hasSetPlayers = false;
+
     [Space]
 
     [Header("Level Manager")]
@@ -41,7 +43,6 @@ public class PlayerControllerFighting : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         if (GameObject.FindGameObjectWithTag("levelManager") != null)
         {
             levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
@@ -55,33 +56,38 @@ public class PlayerControllerFighting : MonoBehaviour
         displayState0UI();
         continueButton.SetActive(false);
 
-        setPlayers();
+        hasSetPlayers = setPlayers();
 
-		for (int i = 0; i < enemies.Length; i++) {
-			allCharacters [i] = enemies [i];
-		}
-		for (int i = 0; i < players.Length; i++) {
-			allCharacters [i + enemies.Length] = players [i];
-		}
-
-        resizeAllCharacters(enemies.Length + players.Length, ref allCharacters);
-
-        //Sort allCharacters to turnOrder.
-        turnOrder = sortToSpeed(allCharacters);
-        
-        //Set currentCharacter to turnOrder[currentTurnCounter]
-        currentCharacter = turnOrder[currentTurnCounter];
-
-        if (currentCharacter.gameObject.tag == "Enemy")
+        if (hasSetPlayers)
         {
-            isEnemy = true;
-        }
-        else
-        {
-            isEnemy = false;
-        }
-        //Start Game (Animation Stuff?)
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                allCharacters[i] = enemies[i];
+            }
+            for (int i = 0; i < players.Length; i++)
+            {
+                allCharacters[i + enemies.Length] = players[i];
+            }
 
+            resizeAllCharacters(enemies.Length + players.Length, ref allCharacters);
+
+
+            //Sort allCharacters to turnOrder.
+            turnOrder = sortToSpeed(allCharacters);
+
+            //Set currentCharacter to turnOrder[currentTurnCounter]
+            currentCharacter = turnOrder[currentTurnCounter];
+
+            if (currentCharacter.gameObject.tag == "Enemy")
+            {
+                isEnemy = true;
+            }
+            else
+            {
+                isEnemy = false;
+            }
+            //Start Game (Animation Stuff?)
+        }
     }
 
     private void resizeAllCharacters(int Size, ref CharacterStats[] Group)
@@ -105,25 +111,33 @@ public class PlayerControllerFighting : MonoBehaviour
         setPlayers();
     }
 
-    private void setPlayers()
+    private bool setPlayers()
     {
-        players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
-        players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
-
-        //Set Sliders
-        for (int i = 0; i < players.Length; i++)
+        if (GameObject.Find("Husband Stats") != null && GameObject.Find("Artist Stats") != null)
         {
-            players[i].GetHPSlider().GetComponent<Slider>().maxValue = players[i].GetMaxHealth();
-            players[i].GetHPSlider().GetComponent<Slider>().value = players[i].GetHealth();
+            players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
+            players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
+
+            //Set Sliders
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i].GetHPSlider().GetComponent<Slider>().maxValue = players[i].GetMaxHealth();
+                players[i].GetHPSlider().GetComponent<Slider>().value = players[i].GetHealth();
+            }
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
     void Update()
     {
         disableBlankButtons();
-        if (currentPlayerPointer != null)
+        if (currentPlayerPointer != null && hasSetPlayers)
         {
-            currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetHPSlider().transform.position.x, currentCharacter.GetHPSlider().transform.position.y + (Mathf.PingPong(Time.time / 2, 0.6f) + 4.1f), currentCharacter.GetHPSlider().transform.position.z);
+            currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetPointerLoc().position.x, currentCharacter.GetPointerLoc().position.y + (Mathf.PingPong(Time.time / 2, 0.6f)), currentCharacter.GetPointerLoc().position.z);
         }
     }
 
@@ -286,8 +300,7 @@ public class PlayerControllerFighting : MonoBehaviour
         overlay.SetActive(false);
         button[0].sprite = FindIcon("blank");
         button[1].sprite = FindIcon("attack");
-        button[2].sprite = FindIcon("blank"); 	//TBA - SUPERS
-        button[3].sprite = FindIcon("blank"); 	//TBA - Consumables
+        button[2].sprite = FindIcon("blank"); 	//TBA - Consumables
     }
 
     private void displayState1UI()
@@ -372,7 +385,10 @@ public class PlayerControllerFighting : MonoBehaviour
 
     private void setUITo(int i)
     {
-        tbox.text = "";
+        if (tbox != null)
+        {
+            tbox.text = "";
+        }
         currentStateCounter = i;
         changeUI();
     }
@@ -492,18 +508,16 @@ public class PlayerControllerFighting : MonoBehaviour
 
     IEnumerator startEnemyTurn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
         int playerToAtk = Random.Range(0, players.Length);
-        currentCharacter.AttackAnim();
-        yield return new WaitForSeconds(0.75f);
-
+        
         //Damage Chargable
 
         if (currentCharacter.GetWeapon().weaponAbility(0).GetIsChargable())
         {
             if (currentCharacter.GetWeapon().weaponAbility(0).GetIsChargedUp())
             {
-                players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+                dealDamage(playerToAtk);
                 currentCharacter.GetWeapon().weaponAbility(0).SetIsChargedUp(false);
             }
             else
@@ -513,12 +527,14 @@ public class PlayerControllerFighting : MonoBehaviour
         }
         else
         {
-            players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+            dealDamage(playerToAtk);
         }
 
+        yield return new WaitForSeconds(1.2f);
+
+        currentCharacter.SetActiveTbox(false);
 
         print("currentPlayer dealt" + currentCharacter.GetWeapon().weaponAttack(0) + " damage.");
-        yield return new WaitForSeconds(0.5f);
         if (players[playerToAtk].isDead())
         {
             players[playerToAtk].deathAnimation();
@@ -526,6 +542,15 @@ public class PlayerControllerFighting : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         startNextTurn();
         yield return 0;
+    }
+
+    private void dealDamage(int playerToAtk)
+    {
+        players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+        currentCharacter.AttackAnim();
+        currentCharacter.SetActiveTbox(true);
+        //Set Text
+        currentCharacter.GetTboxText().text = "Don't you have homework to do?";
     }
 
     private CharacterStats[] sortToSpeed(CharacterStats[] input)

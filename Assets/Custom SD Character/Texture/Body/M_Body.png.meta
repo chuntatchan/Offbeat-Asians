@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 36551aa907f94484f82ae713b275c5d4
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: M_Head
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -80,11 +81,31 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: M_Head
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 268
+        width: 707
+        height: 752
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0775300e45985804fa853a2abef88069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 42a43a534249d5f48882918caabb9e68
     vertices: []
     indices: 
     edges: []

@@ -48,7 +48,14 @@ public class EventController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		_weaponExchanger.gameObject.SetActive (false);
+        if (_weaponExchanger  != null)
+        {
+            _weaponExchanger.gameObject.SetActive(false);
+        }
+        else
+        {
+            print("_weaponExchanger is not referenced.");
+        }
 		isWeaponExchangerActive = false;
         if (GameObject.FindGameObjectWithTag("Player1") != null)
         {

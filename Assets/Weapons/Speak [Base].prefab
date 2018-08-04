@@ -51,8 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6981b4cd82734d279f0ba90246c3c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Speak
-  weaponType: Speak
+  _weapontype: 0
+  weaponDescription: '"Say something stupid."'
   weaponAbilities:
   - {fileID: 114337604009655042, guid: 9625025eeaa4a4ad2b663eb53a1ca839, type: 2}
-  Wtype: 1
+  damageReflect: 0
+  weaponIconForTransition: {fileID: 21300000, guid: e5411d78d15c57c468c1dc64e79863fd,
+    type: 3}

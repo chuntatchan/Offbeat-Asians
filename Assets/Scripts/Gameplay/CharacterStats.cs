@@ -14,24 +14,38 @@ public class CharacterStats : MonoBehaviour
     private WeaponStats weaponEquiped;
     [SerializeField]
     private Slider hpSlider;
-	[SerializeField]
-	private TMP_Text HPText;
+    [SerializeField]
+    private TMP_Text HPText, statText;
     [SerializeField]
     private Animator characterAnimator;
-	[SerializeField]
-	private GameObject damagePopUpPrefab;
-	[SerializeField]
-	private Vector2 damagePopUpOffset;
-	[SerializeField]
-	private bool isEnemy;
+    [SerializeField]
+    private GameObject damagePopUpPrefab;
+    [SerializeField]
+    private Transform damagePopUpLoc;
+    [SerializeField]
+    private Transform pointerLoc;
+
+    [Header("Enemy Stuff")]
+
+    [SerializeField]
+    private bool isEnemy;
+    [SerializeField]
+    private GameObject tbox;
+    [SerializeField]
+    private Text tbox_text;
 
     private bool _isDead;
 
     void Start()
     {
-        hpSlider.maxValue = health;
+        hpSlider.maxValue = maxHealth;
         hpSlider.minValue = 0;
         hpSlider.value = health;
+        HPText.text = GetHealthDisplay();
+        if (!isEnemy)
+        {
+            statText.text = GetStatsDisplay();
+        }
     }
 
     private void OnEnable()
@@ -42,6 +56,16 @@ public class CharacterStats : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         resetUI();
+    }
+
+    public string GetHealthDisplay()
+    {
+        return health + "/" + maxHealth;
+    }
+
+    public string GetStatsDisplay()
+    {
+        return "Armor: " + armour + "  Finesse: " + finesse + "%";
     }
 
     public void AttackAnim()
@@ -66,25 +90,25 @@ public class CharacterStats : MonoBehaviour
         return speed;
     }
 
-	public void SetFinesse(int i)
-	{
-		finesse = i;
-	}
+    public void SetFinesse(int i)
+    {
+        finesse = i;
+    }
 
-	public int GetFinesse()
-	{
-		return finesse;
-	}
+    public int GetFinesse()
+    {
+        return finesse;
+    }
 
-	public void SetArmour(int i)
-	{
-		armour = i;
-	}
+    public void SetArmour(int i)
+    {
+        armour = i;
+    }
 
-	public int GetArmour()
-	{
-		return armour;
-	}
+    public int GetArmour()
+    {
+        return armour;
+    }
 
     public int weaponAttack(int i)
     {
@@ -104,22 +128,24 @@ public class CharacterStats : MonoBehaviour
         {
             hpSlider.value = health;
         }
-		if (HPText != null) {
-			HPText.text = health.ToString();
-		}
+        if (HPText != null)
+        {
+            HPText.text = health.ToString();
+        }
         if (characterAnimator != null)
         {
             characterAnimator.SetTrigger("takingDamage");
         }
-		if (damagePopUpPrefab != null) {
-			print ("spawnDamagePopUp");
-			GameObject temp = Instantiate (damagePopUpPrefab, new Vector3 (HPText.gameObject.transform.position.x + damagePopUpOffset.x, HPText.gameObject.transform.position.y + damagePopUpOffset.y, HPText.gameObject.transform.position.z), HPText.gameObject.transform.rotation);
-			temp.GetComponent<TMP_Text> ().text = i.ToString ();
-		}
+        if (damagePopUpPrefab != null)
+        {
+            print("spawnDamagePopUp");
+            GameObject temp = Instantiate(damagePopUpPrefab, damagePopUpLoc.position, damagePopUpLoc.rotation);
+            temp.GetComponent<TMP_Text>().text = i.ToString();
+        }
         if (health < 1)
         {
             _isDead = true;
-			hpSlider.fillRect.gameObject.SetActive (false);
+            hpSlider.fillRect.gameObject.SetActive(false);
         }
     }
 
@@ -128,13 +154,24 @@ public class CharacterStats : MonoBehaviour
         return weaponEquiped;
     }
 
-	public void SetWeapon(WeaponStats newWeapon) {
-		weaponEquiped = newWeapon;
-	}
+    public void SetWeapon(WeaponStats newWeapon)
+    {
+        weaponEquiped = newWeapon;
+    }
 
     public bool isDead()
     {
         return _isDead;
+    }
+
+    public Transform GetDamagePopUpLoc()
+    {
+        return damagePopUpLoc;
+    }
+
+    public Transform GetPointerLoc()
+    {
+        return pointerLoc;
     }
 
     public void deathAnimation()
@@ -147,14 +184,25 @@ public class CharacterStats : MonoBehaviour
         characterAnimator.SetTrigger("attack");
     }
 
+    public void SetActiveTbox(bool state)
+    {
+        tbox.SetActive(state);
+    }
+
+    public Text GetTboxText()
+    {
+        return tbox_text;
+    }
+
     public void startWalkingAnimation()
     {
         characterAnimator.SetBool("isWalking", true);
     }
 
-	public GameObject GetHPSlider() {
-		return hpSlider.gameObject;
-	}
+    public GameObject GetHPSlider()
+    {
+        return hpSlider.gameObject;
+    }
 
     public int GetHealth()
     {
@@ -166,15 +214,16 @@ public class CharacterStats : MonoBehaviour
         return maxHealth;
     }
 
-	public void SetMaxHealth(int n_maxHeath) {
-		maxHealth = n_maxHeath;
-	}
+    public void SetMaxHealth(int n_maxHeath)
+    {
+        maxHealth = n_maxHeath;
+    }
 
     public void resetUI()
     {
         if (charaNum != 0)
         {
-            if (characterAnimator == null || hpSlider == null || HPText == null)
+            if (characterAnimator == null || hpSlider == null || HPText == null || damagePopUpLoc == null || pointerLoc == null || statText == null)
             {
                 GameObject[] player = GameObject.FindGameObjectsWithTag("Player" + charaNum);
                 for (int j = 0; j < player.Length; j++)
@@ -183,6 +232,7 @@ public class CharacterStats : MonoBehaviour
                     {
                         characterAnimator = player[j].GetComponent<Animator>();
                     }
+                    else
                     if (player[j].GetComponent<Slider>() != null)
                     {
                         hpSlider = player[j].GetComponent<Slider>();
@@ -190,16 +240,30 @@ public class CharacterStats : MonoBehaviour
                         hpSlider.minValue = 0;
                         hpSlider.value = health;
                     }
-					if (player [j].GetComponent<TMP_Text> () != null) {
-						HPText = player [j].GetComponent<TMP_Text> ();
-						HPText.text = health.ToString();
-					}
+                    else
+                    if (player[j].GetComponent<TMP_Text>() != null && player[j].name == "HP Text")
+                    {
+                        HPText = player[j].GetComponent<TMP_Text>();
+                        HPText.text = GetHealthDisplay();
+                    }
+                    else if (player[j].GetComponent<TMP_Text>() != null && player[j].name == "Stats" && !isEnemy)
+                    {
+                        statText = player[j].GetComponent<TMP_Text>();
+                        statText.text = GetStatsDisplay();
+                    }
+                    else
+                    if (player[j].name == "DamagePopUpLoc")
+                    {
+                        damagePopUpLoc = player[j].transform;
+                    }
+                    else
+                    if (player[j].name == "PointerLoc")
+                    {
+                        pointerLoc = player[j].transform;
+                    }
                 }
             }
         }
-
-
-
     }
 
 }
