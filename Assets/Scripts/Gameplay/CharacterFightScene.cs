@@ -9,6 +9,7 @@ public class CharacterFightScene : MonoBehaviour
 {
 
 	[SerializeField]
+	private CharacterStats prefabStats;
 	private CharacterStats stats;
 	[SerializeField]
 	private int charaNum;
@@ -43,6 +44,8 @@ public class CharacterFightScene : MonoBehaviour
 
 	void Start ()
 	{
+		stats = prefabStats;
+
 		tempArmour = new List<int> ();
 		tempFinesse = new List<int> ();
 		tempStatDuration = new List<int> ();
@@ -212,7 +215,7 @@ public class CharacterFightScene : MonoBehaviour
 		if (characterAnimator != null && i > 0) {
 			characterAnimator.SetTrigger ("takingDamage");
 		}
-		if (damagePopUpPrefab != null) {
+		if (damagePopUpPrefab != null && damagePopUpLoc != null) {
 			print ("spawnDamagePopUp");
 			GameObject temp = Instantiate (damagePopUpPrefab, damagePopUpLoc.position, damagePopUpLoc.rotation);
 			if (i > 0) {
@@ -280,9 +283,9 @@ public class CharacterFightScene : MonoBehaviour
 		characterAnimator.SetBool ("isWalking", true);
 	}
 
-	public GameObject GetHPSlider ()
+	public Slider GetHPSlider ()
 	{
-		return hpSlider.gameObject;
+		return hpSlider;
 	}
 
 	public int GetHealth ()

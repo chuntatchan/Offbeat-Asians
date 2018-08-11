@@ -130,6 +130,13 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
         hasSetPlayers = setPlayers();
 
+		//Set Sliders
+		for (int i = 0; i < players.Length; i++)
+		{
+			players[i].GetHPSlider().maxValue = players[i].GetMaxHealth();
+			players[i].GetHPSlider().value = players[i].GetHealth();
+		}
+
         if (hasSetPlayers)
         {
             for (int i = 0; i < enemies.Length; i++)
@@ -173,15 +180,15 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+//    private void OnEnable()
+//    {
+//        SceneManager.sceneLoaded += OnSceneLoaded;
+//    }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        setPlayers();
-    }
+//    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+//    {
+//        setPlayers();
+//    }
 
     private bool setPlayers()
     {
@@ -189,13 +196,6 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         {
             players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterFightScene>();
             players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterFightScene>();
-
-            //Set Sliders
-            for (int i = 0; i < players.Length; i++)
-            {
-                players[i].GetHPSlider().GetComponent<Slider>().maxValue = players[i].GetMaxHealth();
-                players[i].GetHPSlider().GetComponent<Slider>().value = players[i].GetHealth();
-            }
             return true;
         }
         else

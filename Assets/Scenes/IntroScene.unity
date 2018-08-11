@@ -3521,7 +3521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 114926925710251286, guid: a22f0fbd7d69543208b05880c11fc32b, type: 2}
+  prefabStats: {fileID: 114926925710251286, guid: a22f0fbd7d69543208b05880c11fc32b,
+    type: 2}
   charaNum: 1
   weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
     type: 2}
@@ -7550,7 +7551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 114926925710251286, guid: a22f0fbd7d69543208b05880c11fc32b, type: 2}
+  prefabStats: {fileID: 114926925710251286, guid: a22f0fbd7d69543208b05880c11fc32b,
+    type: 2}
   charaNum: 2
   weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
     type: 2}

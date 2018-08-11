@@ -254,6 +254,36 @@ Prefab:
       value: 
       objectReference: {fileID: 114236662264511466, guid: 08f66b76d03941d4ebb54d62d85736cc,
         type: 2}
+    - target: {fileID: 1165107067496304, guid: 9fbe65dd87530443a9d947d16c05a1a6, type: 2}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1785372273771406, guid: 9fbe65dd87530443a9d947d16c05a1a6, type: 2}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114322650767323898, guid: 9fbe65dd87530443a9d947d16c05a1a6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 482237685}
+    - target: {fileID: 114322650767323898, guid: 9fbe65dd87530443a9d947d16c05a1a6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: continueButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676957360979082, guid: 9fbe65dd87530443a9d947d16c05a1a6,
+        type: 2}
+      propertyPath: prefabStats
+      value: 
+      objectReference: {fileID: 114236662264511466, guid: 08f66b76d03941d4ebb54d62d85736cc,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9fbe65dd87530443a9d947d16c05a1a6, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &482237685 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114247823621702494, guid: 9fbe65dd87530443a9d947d16c05a1a6,
+    type: 2}
+  m_PrefabInternal: {fileID: 482237684}
+  m_Script: {fileID: 11500000, guid: 05d256abeff3a4846b6f8f0c8a3083e5, type: 3}
