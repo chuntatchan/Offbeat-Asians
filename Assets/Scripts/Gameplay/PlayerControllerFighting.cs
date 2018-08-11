@@ -8,7 +8,7 @@ public class PlayerControllerFighting : MonoBehaviour
 {
 
     [SerializeField]
-    private CharacterStats[] allCharacters, enemies, players;
+    private CharacterFightScene[] allCharacters, enemies, players;
     [SerializeField]
     private GameObject overlay, enemyLayer, BGLayer, playerLayer, continueButton;
     [SerializeField]
@@ -20,9 +20,9 @@ public class PlayerControllerFighting : MonoBehaviour
     private Text tbox;
 
     [SerializeField]
-    private CharacterStats currentCharacter;
+    private CharacterFightScene currentCharacter;
     [SerializeField]
-    private CharacterStats[] turnOrder;
+    private CharacterFightScene[] turnOrder;
     [SerializeField]
     private int currentTurnCounter, currentStateCounter;
 
@@ -90,9 +90,9 @@ public class PlayerControllerFighting : MonoBehaviour
         }
     }
 
-    private void resizeAllCharacters(int Size, ref CharacterStats[] Group)
+    private void resizeAllCharacters(int Size, ref CharacterFightScene[] Group)
     {
-        CharacterStats[] temp = new CharacterStats[Size];
+        CharacterFightScene[] temp = new CharacterFightScene[Size];
         for (int c = 0; c < Size; c++)
         {
             temp[c] = Group[c];
@@ -115,8 +115,8 @@ public class PlayerControllerFighting : MonoBehaviour
     {
         if (GameObject.Find("Husband Stats") != null && GameObject.Find("Artist Stats") != null)
         {
-            players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
-            players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
+            players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterFightScene>();
+            players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterFightScene>();
 
             //Set Sliders
             for (int i = 0; i < players.Length; i++)
@@ -553,9 +553,9 @@ public class PlayerControllerFighting : MonoBehaviour
         currentCharacter.GetTboxText().text = "Don't you have homework to do?";
     }
 
-    private CharacterStats[] sortToSpeed(CharacterStats[] input)
+    private CharacterFightScene[] sortToSpeed(CharacterFightScene[] input)
     {
-        CharacterStats temp;
+        CharacterFightScene temp;
         for (int write = 0; write < input.Length; write++)
         {
             for (int sort = 0; sort < input.Length - 1; sort++)

@@ -9,58 +9,61 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1692016393238348}
+  m_RootGameObject: {fileID: 1107385738603920}
   m_IsPrefabParent: 1
---- !u!1 &1692016393238348
+--- !u!1 &1107385738603920
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4924373578670918}
-  - component: {fileID: 114364628577595816}
+  - component: {fileID: 4889069151304894}
+  - component: {fileID: 114881735241502468}
   m_Layer: 0
-  m_Name: WeaponList
+  m_Name: DimSum (Consumable)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4924373578670918
+--- !u!4 &4889069151304894
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1692016393238348}
+  m_GameObject: {fileID: 1107385738603920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 90}
+  m_LocalPosition: {x: -5.2645483, y: -1.8528329, z: 90.04179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114364628577595816
+--- !u!114 &114881735241502468
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1692016393238348}
+  m_GameObject: {fileID: 1107385738603920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1be786845f3e4276aeb748a937ba084, type: 3}
+  m_Script: {fileID: 11500000, guid: 37ce12acc60c54bf49c0c8b8e8010c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - type: 1
-    weaponPrefab: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
-      type: 2}
-  - type: 2
-    weaponPrefab: {fileID: 114710963715982812, guid: 2cacb8347241e4a43907c0fdbbd94939,
-      type: 2}
-  - type: 3
-    weaponPrefab: {fileID: 114710963715982812, guid: 458b37ad76fb24296b890a7013db5acb,
-      type: 2}
-  - type: 4
-    weaponPrefab: {fileID: 114710963715982812, guid: 7ece8eb89fd814bfdaf260afdcbc549f,
-      type: 2}
+  consumableImage: {fileID: 21300000, guid: d984ebdf0b1e04fee8dd767775584bdc, type: 3}
+  consumableColorType: {fileID: 21300002, guid: f6e4dd6d3e41e45138b990dde13c5e0f,
+    type: 3}
+  rarity: 0
+  HPChange: -6
+  targetable: 1
+  ArmourChange: 0
+  FinesseChange: 0
+  duration: 0
+  stun: 0
+  usesLeft: 2
+  damageMultiplier: 1
+  damageReductionMultiplier: 1
+  usedSprites:
+  - {fileID: 21300000, guid: d274621577fca4424b9be2aa6f20d9bf, type: 3}
+  - {fileID: 21300000, guid: d984ebdf0b1e04fee8dd767775584bdc, type: 3}

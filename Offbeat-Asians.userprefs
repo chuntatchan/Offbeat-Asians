@@ -1,17 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gameplay/CharacterStats.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gameplay/PlayerControllerFightingv2.cs">
     <Files>
-      <File FileName="Assets/Scripts/Gameplay/EventController.cs" Line="124" Column="5" />
-      <File FileName="Assets/Scripts/Gameplay/WeaponExchanger.cs" Line="15" Column="17" />
-      <File FileName="Assets/Scripts/TransitionScenes/EventOptionStats.cs" Line="25" Column="2" />
-      <File FileName="Assets/Scripts/Gameplay/CharacterStats.cs" Line="47" Column="1" />
-      <File FileName="Assets/Scripts/TransitionScenes/EventText.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/WeaponStats.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/Consumable.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/Skill.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/WeaponList.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/DamagePopUp.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="16" Column="29" />
+      <File FileName="Assets/Scripts/Gameplay/PlayerControllerFightingv2.cs" Line="306" Column="33" />
+      <File FileName="Assets/Scripts/Gameplay/ItemSlot.cs" Line="21" Column="21" />
+      <File FileName="Assets/Scripts/Gameplay/Consumable.cs" Line="65" Column="13" />
+      <File FileName="Assets/Scripts/ItemsList.cs" Line="10" Column="8" />
+      <File FileName="Assets/Scripts/Gameplay/WeaponList.cs" Line="27" Column="43" />
+      <File FileName="Assets/Scripts/Gameplay/WeaponStats.cs" Line="26" Column="16" />
+      <File FileName="Assets/Scripts/Gameplay/CharacterStats.cs" Line="8" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

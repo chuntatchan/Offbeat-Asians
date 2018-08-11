@@ -23,4 +23,12 @@ public class WeaponList : MonoBehaviour {
 		return null;
 	}
 
+	public WeaponStats GetRandomWeapon(int randomInt) {
+		return weapons [randomInt].weaponPrefab;
+	}
+
+	public int GetLength() {
+		return weapons.Length;
+	}
+
 }

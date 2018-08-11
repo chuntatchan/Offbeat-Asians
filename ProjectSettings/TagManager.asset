@@ -9,6 +9,7 @@ TagManager:
   - Player2
   - continueButton
   - levelManager
+  - Inventory
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class EventController : MonoBehaviour
     [SerializeField]
     private Slider[] playerHPSliders;
     [SerializeField]
-    private CharacterStats[] playerStats;
+    private CharacterFightScene[] playerStats;
     [SerializeField]
     private TMP_Text questionText, promptText;
     [SerializeField]
@@ -59,11 +59,11 @@ public class EventController : MonoBehaviour
 		isWeaponExchangerActive = false;
         if (GameObject.FindGameObjectWithTag("Player1") != null)
         {
-            playerStats[0] = GameObject.FindGameObjectWithTag("Player1").GetComponent<CharacterStats>();
+            playerStats[0] = GameObject.FindGameObjectWithTag("Player1").GetComponent<CharacterFightScene>();
         }
         if (GameObject.FindGameObjectWithTag("Player2") != null)
         {
-            playerStats[1] = GameObject.FindGameObjectWithTag("Player2").GetComponent<CharacterStats>();
+            playerStats[1] = GameObject.FindGameObjectWithTag("Player2").GetComponent<CharacterFightScene>();
         }
         if (GameObject.FindGameObjectWithTag("levelManager") != null)
         {

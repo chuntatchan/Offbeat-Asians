@@ -8,27 +8,47 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 {
 
     [SerializeField]
-    private CharacterStats[] allCharacters, enemies, players;
+    private CharacterFightScene[] allCharacters, enemies, players;
     [SerializeField]
-    private GameObject overlayWeapon, overlayWeaponDetail, overlayBag, overlayBagDetail, enemyLayer, BGLayer, playerLayer, continueButton;
+    private GameObject enemyLayer, BGLayer, playerLayer, continueButton;
+
+	[Header("Weapon Overlay")]
     [SerializeField]
-    private GameObject[] overlayWeaponDetailConnector, overlayWeaponDetailTab;   //, overlayBagDetailConnector;
+    private GameObject[] overlayWeaponDetailConnector;
+	[SerializeField]
+	private GameObject[] overlayWeaponDetailTab;
+	[SerializeField]
+	private GameObject overlayWeapon, overlayWeaponDetail;
+	[SerializeField]
+	private Image[] weaponButtonImage;
+
+	[Header("Inventory Overlay")]
+	[SerializeField]
+	private ItemSlot[] itemSlots;
+	[SerializeField]
+	private GameObject overlayBag;
+
+	[Space]
+
     [SerializeField]
     private BoxCollider2D[] enemiesColliders;
     [SerializeField]
-    private Image[] buttonImage, weaponButtonImage;
+	private Image[] buttonImage;
+	[SerializeField]
     private bool[] isButtonActive;
     [SerializeField]
     private UI_Icon[] UI_Icons;
 
     [SerializeField]
-    private CharacterStats currentCharacter;
+    private CharacterFightScene currentCharacter;
     [SerializeField]
-    private CharacterStats[] turnOrder;
+    private CharacterFightScene[] turnOrder;
     [SerializeField]
     private int currentTurnCounter, currentStateCounter;
 
     private Skill currentSkillToBeDealt;
+	private Consumable currentConsumableToUse;
+	private int currentConsumableInt;
     private bool isEnemy;
 
     public GameObject currentPlayerPointer;
@@ -41,6 +61,18 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     [SerializeField]
     private LevelManager levelManager;
 
+	[Space]
+
+	[Header("Inventory Manager")]
+	[SerializeField]
+	private Inventory playerInventory;
+	[SerializeField]
+	private WeaponStats weaponToGive;
+	[SerializeField]
+	private Consumable consumableToGive;
+	[SerializeField]
+	private ItemsList allItems;
+
 
     // Use this for initialization
     void Start()
@@ -49,14 +81,51 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         {
             levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
         }
+		if (GameObject.FindGameObjectWithTag("Inventory") != null)
+		{
+			playerInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+		}
+
+		float itemToGiveRandomVal = Random.value;
+		int randomValInt = -1;
+		if (itemToGiveRandomVal <= 0.1f) {
+			//Spawn Legendary
+			itemToGiveRandomVal = Random.value;
+			if (itemToGiveRandomVal <= 0.5f) {
+				//Spawn Legendary Consumable
+				randomValInt = Random.Range(0, allItems.allLegendaryConsumables.Length);
+				consumableToGive = allItems.allLegendaryConsumables [randomValInt].consumablePrefab;
+			} else {
+				//Spawn Weapon
+				randomValInt = Random.Range(0, allItems.allWeapons.GetLength());
+				weaponToGive = allItems.allWeapons.GetRandomWeapon(randomValInt);
+			}
+		} else if (itemToGiveRandomVal <= 0.25f) {
+			//Spawn Rare
+			randomValInt = Random.Range(0, allItems.allRareConsumables.Length);
+			consumableToGive = allItems.allRareConsumables [randomValInt].consumablePrefab;
+		} else if (itemToGiveRandomVal <= 0.5f) {
+			//Spawn Uncommon
+			randomValInt = Random.Range(0, allItems.allUncommonConsumables.Length);
+			consumableToGive = allItems.allUncommonConsumables [randomValInt].consumablePrefab;
+		} else {
+			//Spawn Common
+			randomValInt = Random.Range(0, allItems.allCommonConsumables.Length);
+			consumableToGive = allItems.allCommonConsumables [randomValInt].consumablePrefab;
+		}
+
 
         //Set currentTurnCounter & currentStateCounter to 0 & set all buttons except buttonImage[0] to active
         currentTurnCounter = 0;
         currentStateCounter = 0;
         overlayWeapon.SetActive(false);
         overlayBag.SetActive(false);
-        isButtonActive = new bool[buttonImage.Length];
-        displayState0UI();
+
+
+        isButtonActive = new bool[itemSlots.Length+1];
+
+
+		setUITo (0);
         continueButton.SetActive(false);
 
         hasSetPlayers = setPlayers();
@@ -93,9 +162,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         }
     }
 
-    private void resizeAllCharacters(int Size, ref CharacterStats[] Group)
+    private void resizeAllCharacters(int Size, ref CharacterFightScene[] Group)
     {
-        CharacterStats[] temp = new CharacterStats[Size];
+        CharacterFightScene[] temp = new CharacterFightScene[Size];
         for (int c = 0; c < Size; c++)
         {
             temp[c] = Group[c];
@@ -118,8 +187,8 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     {
         if (GameObject.Find("Husband Stats") != null && GameObject.Find("Artist Stats") != null)
         {
-            players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterStats>();
-            players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterStats>();
+            players[0] = GameObject.Find("Husband Stats").GetComponent<CharacterFightScene>();
+            players[1] = GameObject.Find("Artist Stats").GetComponent<CharacterFightScene>();
 
             //Set Sliders
             for (int i = 0; i < players.Length; i++)
@@ -137,7 +206,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
     void Update()
     {
-        disableBlankButtons();
+		disableBlankButtons ();
         if (currentPlayerPointer != null && hasSetPlayers)
         {
             currentPlayerPointer.transform.position = new Vector3(currentCharacter.GetPointerLoc().position.x, currentCharacter.GetPointerLoc().position.y + (Mathf.PingPong(Time.time / 2, 0.6f)), currentCharacter.GetPointerLoc().position.z);
@@ -167,28 +236,26 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         //if return, then return to State 0
 
 
-
-        if (currentStateCounter == 0)
+        if (currentStateCounter == 0) 		//Base
         {
             displayState0UI();
         }
-        else if (currentStateCounter == 1)
+        else if (currentStateCounter == 1) 	//Weapon Skill Overlay
         {
             displayState1UI();
         }
-        else if (currentStateCounter == 2)
+        else if (currentStateCounter == 2) 	//SkillChosen
         {
             displayState2UI();
         }
-        else if (currentStateCounter == 3)
+        else if (currentStateCounter == 3) 	//Bag Overlay
         {
             displayState3UI();
         }
-        else if (currentStateCounter == 4)
+        else if (currentStateCounter == 4)	
         {
             displayState4UI();
         }
-
     }
 
     public void buttonClicked(int i)
@@ -199,67 +266,90 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         }
         else
         {
-            if (currentStateCounter == 0)
-            {
-                if (i == 1)
-                {
-                    setUITo(1);
-                }
-                else if (i == 2)
-                {
-                    //Open Bag
-                }
-            }
-            else if (currentStateCounter == 3)
-            {
-
-            }
-            else if (currentStateCounter == 4)
-            {
-
-            }
+			if (i == 1)
+			{
+				setUITo(1);
+			}
+			else if (i == 2)
+			{
+				//Open Bag
+				setUITo(3);
+			}
         }
     }
 
     public void detailButtonClicked(int i)
     {
-        if (currentStateCounter == 1)
-        {
-            if (i == 0)
-            {
-                setUITo(i);
-            }
-            else
-            {
-                //Deal damage to corresponding character
-                currentSkillToBeDealt = currentCharacter.GetWeapon().weaponAbility(i - 1);
-                setUITo(2);
-                overlayWeaponDetailConnector[i - 1].SetActive(true);
-            }
-        }
+		if (isButtonActive [i] == false) {
+			return;
+		} else {
+			if (currentStateCounter == 1) {
+				if (i == 0) {
+					setUITo (i);
+				} else {
+					//Deal damage to corresponding character
+					currentSkillToBeDealt = currentCharacter.GetWeapon ().weaponAbility (i - 1);
+					setUITo (2);
+
+					//Show Weapon Detail
+					overlayWeaponDetailConnector [i - 1].SetActive (true);
+				}
+			} else if (currentStateCounter == 3 || currentStateCounter == 4) {
+				if (i == 0) {
+					setUITo (i);
+				} else {
+					//Select chosen item
+					print("Item: " + i.ToString() + " Chosen");
+					if (playerInventory.At (i - 1).isTargetable ()) {
+						currentConsumableToUse = playerInventory.At (i - 1);
+						currentConsumableInt = i - 1;
+						setUITo (4);
+
+					} else {
+						playerInventory.At (i - 1).SetTarget (currentCharacter);
+
+						playerInventory.At (i - 1).Use ();
+						if (!playerInventory.At (i - 1).hasUsesLeft ()) {
+							playerInventory.Remove (i-1);
+						}
+						setInventoryImages ();
+
+						startNextTurn ();
+					}
+				}
+			}
+		}
     }
 
     public void enemyButtonClicked(int i)
     {
-        if (currentStateCounter == 2)
-        {
-            print("State 2: Button " + i + " Pressed.");
-            if (i == 0)
-            {
-                setUITo(0);
-            }
-            else
-            {
-                currentCharacter.attackAnimation();
-                enemies[i - 1].takeDamage(currentSkillToBeDealt.getDamage());
-                currentSkillToBeDealt = null;
-                if (enemies[i - 1].isDead())
-                {
-                    enemies[i - 1].deathAnimation();
-                }
-                startNextTurn();
-            }
-        }
+		if (isButtonActive [i] == false) {
+			return;
+		} else {
+			if (currentStateCounter == 2) {
+				print ("State 2: Button " + i + " Pressed.");
+				if (i == 0) {
+					setUITo (0);
+				} else {
+					currentCharacter.attackAnimation ();
+					print ("damageDealt: " + Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()).ToString ());
+					enemies [i - 1].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
+					currentSkillToBeDealt = null;
+					if (enemies [i - 1].isDead ()) {
+						enemies [i - 1].deathAnimation ();
+					}
+					startNextTurn ();
+				}
+			} else if (currentStateCounter == 4) {
+				currentConsumableToUse.SetTarget (enemies[i - 1]);
+				currentConsumableToUse.Use ();
+				if (!currentConsumableToUse.hasUsesLeft ()) {
+					playerInventory.Remove (currentConsumableInt);
+				}
+				setInventoryImages ();
+				startNextTurn ();
+			}
+		}
     }
 
     public void onMouseHoverButton(int i)
@@ -287,15 +377,19 @@ public class PlayerControllerFightingv2 : MonoBehaviour
             enemiesColliders[i].enabled = false;
         }
         currentSkillToBeDealt = null;
+		currentConsumableToUse = null;
         overlayWeaponDetail.SetActive(false);
         buttonImage[0].sprite = FindIcon("blank");
         buttonImage[1].sprite = FindIcon("attack");
-        buttonImage[2].sprite = FindIcon("blank"); 	//TBA - Consumables
+        buttonImage[2].sprite = FindIcon("backpack");
     }
 
     private void displayState1UI()
     {
         print("displayState1UI");
+
+		overlayBag.SetActive(false);
+
         overlayWeapon.SetActive(true);
         buttonImage[0].sprite = FindIcon("return");
         for (int i = 0; i < currentCharacter.GetWeapon().numAbilities(); i++)
@@ -314,6 +408,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     private void displayState2UI()
     {
         print("displayState2UI");
+
+		overlayBag.SetActive (false);
+
         overlayWeaponDetail.SetActive(true);
         for (int j = 0; j < enemiesColliders.Length; j++)
         {
@@ -324,40 +421,77 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
     private void displayState3UI()
     {
+		print ("displayState3UI");
+		overlayWeapon.SetActive (false);
+		overlayWeaponDetail.SetActive (false);
+		buttonImage[0].sprite = FindIcon("return");
+
+		overlayBag.SetActive (true);
+		setInventoryImages ();
+
     }
+
+	private void setInventoryImages() {
+		if (playerInventory != null) {
+			for (int i = 0; i < itemSlots.Length; i++) {
+				if (playerInventory.consumableInventory [i] != null) {
+					itemSlots [i].SetItemImage (playerInventory.consumableInventory [i].GetImage ());
+					itemSlots [i].SetColor (playerInventory.consumableInventory [i].GetColorType ());
+				} else {
+					itemSlots [i].SetItemImage (FindIcon("blank"));
+					itemSlots [i].SetColor (FindIcon("greyCircle"));
+				}
+			}
+		}
+	}
 
     private void displayState4UI()
     {
+		for (int j = 0; j < enemiesColliders.Length; j++)
+		{
+			enemiesColliders[j].enabled = true;
+		}
     }
 
     private void disableBlankButtons()
     {
-        if (currentStateCounter == 2)
+        if (currentStateCounter == 1) //WeaponSelect
         {
+			isButtonActive [0] = true;
             for (int i = 0; i < weaponButtonImage.Length; i++)
             {
-                if (weaponButtonImage[i].sprite != FindIcon("blank"))
+                if (weaponButtonImage[i].sprite == FindIcon("blank"))
                 {
-                    isButtonActive[i] = true;
+					isButtonActive[i+1] = false;
                 }
                 else
                 {
-                    isButtonActive[i] = false;
+                    isButtonActive[i+1] = true;
                 }
             }
         }
+		else if (currentStateCounter == 3) //ConsumableSelect
+		{
+			isButtonActive [0] = true;
+			for (int i = 0; i < itemSlots.Length; i++) {
+				if (itemSlots [i].GetItemSprite () == FindIcon ("blank")) {
+					isButtonActive [i+1] = false;
+				} else {
+					isButtonActive [i+1] = true;
+				}
+			}
+		}
         else
         {
-
-            for (int i = 0; i < buttonImage.Length; i++)
+            for (int i = 0; i < buttonImage.Length; i++) //Base
             {
-                if (buttonImage[i].sprite != FindIcon("blank"))
+                if (buttonImage[i].sprite == FindIcon("blank"))
                 {
-                    isButtonActive[i] = true;
+                    isButtonActive[i] = false;
                 }
                 else
                 {
-                    isButtonActive[i] = false;
+                    isButtonActive[i] = true;
                 }
             }
         }
@@ -401,6 +535,15 @@ public class PlayerControllerFightingv2 : MonoBehaviour
             if (enemiesAllDead)
             {               //ENEMIES ALL DEAD || WIN BATTLE
                 print("You win!");
+
+				//Spawn Item/Weapon Drop Popup
+				if (weaponToGive != null) {
+					//WeaponSwapPopUp
+				} else if (consumableToGive != null) {
+					playerInventory.Add (consumableToGive);
+				}
+
+
                 spawnContinueButton();
 
             }
@@ -411,6 +554,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
                 currentStateCounter = 0;
                 currentTurnCounter = (currentTurnCounter + 1) % allCharacters.Length;
                 currentCharacter = turnOrder[currentTurnCounter];
+
+				currentCharacter.turnTick (); //For tempStats
+
                 if (currentCharacter.isDead())
                 {
                     startNextTurn();
@@ -525,16 +671,16 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
     private void dealDamage(int playerToAtk)
     {
-        players[playerToAtk].takeDamage(currentCharacter.GetWeapon().weaponAttack(0));
+		players[playerToAtk].takeDamage(Mathf.RoundToInt(currentCharacter.GetWeapon().weaponAttack(0) * currentCharacter.GetDamageMultiplier()));
         currentCharacter.AttackAnim();
         currentCharacter.SetActiveTbox(true);
         //Set Text
         currentCharacter.GetTboxText().text = "Don't you have homework to do?";
     }
 
-    private CharacterStats[] sortToSpeed(CharacterStats[] input)
+    private CharacterFightScene[] sortToSpeed(CharacterFightScene[] input)
     {
-        CharacterStats temp;
+        CharacterFightScene temp;
         for (int write = 0; write < input.Length; write++)
         {
             for (int sort = 0; sort < input.Length - 1; sort++)

@@ -22,6 +22,9 @@ public class WeaponStats : MonoBehaviour
 
     public Skill weaponAbility(int i)
     {
+		if (i >= weaponAbilities.Length) {
+			return null;
+		}
         return weaponAbilities[i];
     }
 

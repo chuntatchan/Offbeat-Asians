@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class IntroSceneController : MonoBehaviour {
 
 	[SerializeField]
-	private CharacterStats[] players;
+	private CharacterFightScene[] players;
 	[SerializeField]
 	private GameObject playersLayer;
 	[SerializeField]
