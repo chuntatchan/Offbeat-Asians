@@ -38,7 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2091c41b9378345a5dce6d8e2d02f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionText: 
+  optionText: Give healing item 2
   changeHP: 0
   HPChange: 17
   changeMaxHP: 0

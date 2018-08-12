@@ -39,15 +39,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionText: ??? [Good]
-  changeHP: 1
-  HPChange: 10
-  changeMaxHP: 1
-  maxHPChange: 10
+  changeHP: 0
+  HPChange: 0
+  changeMaxHP: 0
+  maxHPChange: 0
   changeFinesse: 0
   finesseChange: 0
   changeArmour: 0
   armourChange: 0
   weaponToGive: 0
+  consumableToGive: 0
 --- !u!224 &224537694422487310
 RectTransform:
   m_ObjectHideFlags: 1

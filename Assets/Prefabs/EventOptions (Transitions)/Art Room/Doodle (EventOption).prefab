@@ -40,11 +40,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionText: Doodle
   changeHP: 1
-  HPChange: 17
+  HPChange: -11
   changeMaxHP: 0
   maxHPChange: 0
-  changeFinesse: 0
-  finesseChange: 0
+  changeFinesse: 1
+  finesseChange: -4
   changeArmour: 0
   armourChange: 0
   weaponToGive: 0

@@ -40,7 +40,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionText: Weights
   changeHP: 0
-  HPChange: 17
+  HPChange: 0
   changeMaxHP: 1
   maxHPChange: 15
   changeFinesse: 1
@@ -48,6 +48,7 @@ MonoBehaviour:
   changeArmour: 0
   armourChange: 0
   weaponToGive: 0
+  consumableToGive: 0
 --- !u!224 &224537694422487310
 RectTransform:
   m_ObjectHideFlags: 1

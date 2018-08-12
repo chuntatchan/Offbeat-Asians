@@ -104,14 +104,20 @@ public class EventController : MonoBehaviour
 				if (playerStats [activeCharacter] != null) {
 					if (eventTexts [i].GetEventOption (i).changeHP) {
 						playerStats [activeCharacter].takeDamage (-eventTexts [i].GetEventOption (i).GetHPChange ());
+						if (eventTexts [i].GetEventOption (i).GetHPChange () > 0) {
+							print ("Player" + activeCharacter + " heal: " + eventTexts [i].GetEventOption (i).GetHPChange ());
+						} else {
+							print ("Player" + activeCharacter + " take damage: " + -eventTexts [i].GetEventOption (i).GetHPChange ());
+						}
 					}
 					if (eventTexts [i].GetEventOption (i).changeMaxHP) {
-						playerStats [activeCharacter].SetMaxHealth (eventTexts [i].GetEventOption (i).GetMaxHPChange ());
+						playerStats [activeCharacter].SetMaxHealth (playerStats[activeCharacter].GetMaxHealth() + eventTexts [i].GetEventOption (i).GetMaxHPChange ());
 					}
 					if (eventTexts [i].GetEventOption (i).changeFinesse) {
 						playerStats [activeCharacter].SetFinesse (playerStats [activeCharacter].GetFinesse () + eventTexts [i].GetEventOption (i).finesseChange);
 					}
 					if (eventTexts [i].GetEventOption (i).changeArmour) {
+						print ("changingArmour: +" + eventTexts [i].GetEventOption (i).armourChange);
 						playerStats [activeCharacter].SetArmour (playerStats [activeCharacter].GetArmour () + eventTexts [i].GetEventOption (i).armourChange);
 					}
 					if (eventTexts [i].GetEventOption (i).weaponToGive != WeaponType.none) {

@@ -7,10 +7,10 @@ using TMPro;
 
 public class CharacterFightScene : MonoBehaviour
 {
-
 	[SerializeField]
 	private CharacterStats prefabStats;
-	private CharacterStats stats;
+	[SerializeField]
+	private int statMaxHealth, statHealth, statArmour, statFinesse, statSpeed;
 	[SerializeField]
 	private int charaNum;
 	private List<int> tempArmour, tempFinesse;
@@ -44,7 +44,11 @@ public class CharacterFightScene : MonoBehaviour
 
 	void Start ()
 	{
-		stats = prefabStats;
+		statMaxHealth = prefabStats.GetMaxHealth ();
+		statHealth = prefabStats.GetHealth ();
+		statArmour = prefabStats.GetArmour ();
+		statFinesse = prefabStats.GetFinesse ();
+		statSpeed = prefabStats.GetSpeed ();
 
 		tempArmour = new List<int> ();
 		tempFinesse = new List<int> ();
@@ -53,9 +57,9 @@ public class CharacterFightScene : MonoBehaviour
 		tempDamageReductionMultiplier = new List<float> ();
 
 
-		hpSlider.maxValue = stats.GetMaxHealth ();
+		hpSlider.maxValue = statMaxHealth;
 		hpSlider.minValue = 0;
-		hpSlider.value = stats.GetHealth();
+		hpSlider.value = statHealth;
 		HPText.text = GetHealthDisplay ();
 		if (!isEnemy) {
 			statText.text = GetStatsDisplay ();
@@ -102,23 +106,23 @@ public class CharacterFightScene : MonoBehaviour
 
 	public string GetHealthDisplay ()
 	{
-		return stats.GetHealth () + "/" + stats.GetMaxHealth ();
+		return statHealth + "/" + statMaxHealth;
 	}
 
 	public void SetHealthDisplay ()
 	{
-		HPText.text = stats.GetHealth () + "/" + stats.GetMaxHealth ();
-		hpSlider.value = stats.GetHealth ();
+		HPText.text = statHealth + "/" + statMaxHealth;
+		hpSlider.value = statHealth;
 	}
 
 	public string GetStatsDisplay ()
 	{
-		return "Armor: " + stats.GetArmour () + "  Finesse: " + stats.GetFinesse () + "%";
+		return "Armor: " + statArmour + "  Finesse: " + statFinesse + "%";
 	}
 
 	public void SetStatsDisplay ()
 	{
-		statText.text = "Armor: " + stats.GetArmour () + "  Finesse: " + stats.GetFinesse () + "%";
+		statText.text = "Armor: " + statArmour + "  Finesse: " + statFinesse + "%";
 	}
 
 	public void AttackAnim ()
@@ -135,7 +139,7 @@ public class CharacterFightScene : MonoBehaviour
 
 	public void SetSpeed (int i)
 	{
-		stats.SetSpeed (i);
+		statSpeed = i;
 	}
 
 	public float GetDamageMultiplier ()
@@ -151,27 +155,27 @@ public class CharacterFightScene : MonoBehaviour
 
 	public int GetSpeed ()
 	{
-		return stats.GetSpeed ();
+		return statSpeed;
 	}
 
 	public void SetFinesse (int i)
 	{
-		stats.SetFinesse (i);
+		statFinesse = i;
 	}
 
 	public int GetFinesse ()
 	{
-		return stats.GetSpeed ();
+		return statFinesse;
 	}
 
 	public void SetArmour (int i)
 	{
-		stats.SetArmour (i);
+		statArmour = i;
 	}
 
 	public int GetArmour ()
 	{
-		return stats.GetArmour ();
+		return statArmour;
 	}
 
 	public int weaponAttack (int i)
@@ -196,18 +200,19 @@ public class CharacterFightScene : MonoBehaviour
 			}
 		}
 		print ("totalTempArmour: " + totalTempArmour.ToString ());
-		print ("damageTaken: " + (Mathf.RoundToInt (i * totalDamageReductionMulti) - (stats.GetArmour () + totalTempArmour)).ToString ());
-		if (i > 0) {
-			stats.SetHealth (Mathf.Clamp (stats.GetHealth () - (Mathf.RoundToInt (i * totalDamageReductionMulti) - (stats.GetArmour () + totalTempArmour)), 0, 99));
+		if (i < 0) {
+			statHealth = (Mathf.Clamp (statHealth - (Mathf.RoundToInt (i * totalDamageReductionMulti) - (statArmour + totalTempArmour)), 0, 99));
+			print ("damageTaken: " + (Mathf.RoundToInt (i * totalDamageReductionMulti) - (statArmour + totalTempArmour)).ToString ());
 		} else {
-			stats.SetHealth (Mathf.Clamp (stats.GetHealth () - i, 0, stats.GetMaxHealth ()));
+			statHealth = (Mathf.Clamp (statHealth - i, 0, statMaxHealth ));
+			print ("damageHeal: " + i);
 		}
-		if (stats.GetHealth () > stats.GetMaxHealth ()) {
-			stats.SetHealth (stats.GetMaxHealth ());
+		if (statHealth > statMaxHealth) {
+			statHealth = (statMaxHealth);
 		}
 
 		if (hpSlider != null) {
-			hpSlider.value = stats.GetHealth ();
+			hpSlider.value = statHealth;
 		}
 		if (HPText != null) {
 			SetHealthDisplay ();
@@ -219,7 +224,7 @@ public class CharacterFightScene : MonoBehaviour
 			print ("spawnDamagePopUp");
 			GameObject temp = Instantiate (damagePopUpPrefab, damagePopUpLoc.position, damagePopUpLoc.rotation);
 			if (i > 0) {
-				temp.GetComponent<TMP_Text> ().text = (Mathf.CeilToInt (i * totalDamageReductionMulti) - (stats.GetArmour () + totalTempArmour)).ToString ();
+				temp.GetComponent<TMP_Text> ().text = (Mathf.CeilToInt (i * totalDamageReductionMulti) - (statArmour + totalTempArmour)).ToString ();
 			} else if (i < 0) {
 				temp.GetComponentInChildren<SpriteRenderer> ().color = Color.green;
 				string text = (i * -1).ToString ();
@@ -227,7 +232,7 @@ public class CharacterFightScene : MonoBehaviour
 				temp.GetComponent<TMP_Text> ().text = text;
 			}
 		}
-		if (stats.GetHealth () < 1) {
+		if (statHealth < 1) {
 			_isDead = true;
 			hpSlider.fillRect.gameObject.SetActive (false);
 		}
@@ -290,17 +295,17 @@ public class CharacterFightScene : MonoBehaviour
 
 	public int GetHealth ()
 	{
-		return stats.GetHealth ();
+		return statHealth;
 	}
 
 	public int GetMaxHealth ()
 	{
-		return stats.GetMaxHealth ();
+		return statMaxHealth;
 	}
 
 	public void SetMaxHealth (int n_maxHeath)
 	{
-		stats.SetMaxHealth (n_maxHeath);
+		statMaxHealth = (n_maxHeath);
 	}
 
 	public void resetUI ()
@@ -313,9 +318,9 @@ public class CharacterFightScene : MonoBehaviour
 						characterAnimator = player [j].GetComponent<Animator> ();
 					} else if (player [j].GetComponent<Slider> () != null) {
 						hpSlider = player [j].GetComponent<Slider> ();
-						hpSlider.maxValue = stats.GetHealth ();
+						hpSlider.maxValue = statHealth;
 						hpSlider.minValue = 0;
-						hpSlider.value = stats.GetHealth ();
+						hpSlider.value = statHealth;
 						;
 					} else if (player [j].GetComponent<TMP_Text> () != null && player [j].name == "HP Text") {
 						HPText = player [j].GetComponent<TMP_Text> ();

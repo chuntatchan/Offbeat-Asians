@@ -14038,7 +14038,7 @@ MonoBehaviour:
   - {fileID: 0}
   enemies:
   - {fileID: 114986081608295156}
-  - {fileID: 114986081608295156}
+  - {fileID: 114855130802883650}
   players:
   - {fileID: 0}
   - {fileID: 0}
@@ -17708,7 +17708,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  prefabStats: {fileID: 0}
+  statMaxHealth: 0
+  statHealth: 0
+  statArmour: 0
+  statFinesse: 0
+  statSpeed: 0
   charaNum: 0
   weaponEquiped: {fileID: 0}
   hpSlider: {fileID: 114656052135756638}
@@ -18650,7 +18655,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91bfd4fb731064b6c9125d575c648cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  prefabStats: {fileID: 0}
+  statMaxHealth: 0
+  statHealth: 0
+  statArmour: 0
+  statFinesse: 0
+  statSpeed: 0
   charaNum: 0
   weaponEquiped: {fileID: 0}
   hpSlider: {fileID: 114642349221474444}

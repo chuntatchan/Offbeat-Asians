@@ -47,6 +47,8 @@ MonoBehaviour:
   finesseChange: 0
   changeArmour: 0
   armourChange: 0
+  weaponToGive: 0
+  consumableToGive: 0
 --- !u!224 &224537694422487310
 RectTransform:
   m_ObjectHideFlags: 1

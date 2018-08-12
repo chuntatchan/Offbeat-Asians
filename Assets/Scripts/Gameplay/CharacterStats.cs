@@ -7,6 +7,14 @@ public class CharacterStats : MonoBehaviour {
 	[SerializeField]
 	private int maxHealth, health, armour, speed, finesse;
 
+//	public void CopyInto(CharacterStats _base) {
+//		_base.SetMaxHealth (maxHealth);
+//		_base.SetHealth(health);
+//		_base.SetArmour(armour);
+//		_base.SetSpeed(speed);
+//		_base.SetFinesse(finesse);
+//	}
+
 	public int GetMaxHealth() {
 		return maxHealth;
 	}

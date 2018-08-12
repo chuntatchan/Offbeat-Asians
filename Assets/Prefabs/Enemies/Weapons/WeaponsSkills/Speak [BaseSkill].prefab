@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: Say something dumb
   damage: 5
+  isChargable: 0
   multiHit: 0
   stunChance: 0
   finesseBoost: 0
-  skillIcon: {fileID: 114023579776994384, guid: 85e8528407b8c4b82b2c703547575802,
+  finesseBoostLength: 0
+  skillIcon: {fileID: 114283984217027140, guid: 8a5f492d09d224088b7a05a34bb27cdc,
     type: 2}

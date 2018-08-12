@@ -39,10 +39,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionText: Sleep
-  changeHP: 1
-  HPChange: 10
+  changeHP: 0
+  HPChange: 0
   changeMaxHP: 1
-  maxHPChange: 10
+  maxHPChange: -15
   changeFinesse: 0
   finesseChange: 0
   changeArmour: 0

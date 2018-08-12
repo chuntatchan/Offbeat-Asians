@@ -38,16 +38,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2091c41b9378345a5dce6d8e2d02f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionText: This noodle shop you have been meaning to try out.
-  changeHP: 1
+  optionText: Relax
+  changeHP: 0
   HPChange: 10
-  changeMaxHP: 1
+  changeMaxHP: 0
   maxHPChange: 10
   changeFinesse: 0
   finesseChange: 0
-  changeArmour: 0
-  armourChange: 0
+  changeArmour: 1
+  armourChange: 1
   weaponToGive: 0
+  consumableToGive: 0
 --- !u!224 &224537694422487310
 RectTransform:
   m_ObjectHideFlags: 1

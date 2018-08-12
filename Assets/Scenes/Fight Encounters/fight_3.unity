@@ -306,6 +306,11 @@ Prefab:
       value: 
       objectReference: {fileID: 114789132103166130, guid: 96faac0c3529914428a9cfc7fd707b6c,
         type: 2}
+    - target: {fileID: 114887298468548616, guid: e37b7a48053ea4bf680fad494d928d80,
+        type: 2}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e37b7a48053ea4bf680fad494d928d80, type: 2}
   m_IsPrefabParent: 0

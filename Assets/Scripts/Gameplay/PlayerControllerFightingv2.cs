@@ -332,7 +332,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 					setUITo (0);
 				} else {
 					currentCharacter.attackAnimation ();
-					print ("damageDealt: " + Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()).ToString ());
+					//print ("damageDealt: " + Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()).ToString ());
 					enemies [i - 1].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
 					currentSkillToBeDealt = null;
 					if (enemies [i - 1].isDead ()) {
