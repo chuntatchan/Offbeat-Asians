@@ -104,6 +104,10 @@ public class CharacterFightScene : MonoBehaviour
 		resetUI ();
 	}
 
+	public void SetHealth(int i) {
+		statHealth = i;
+	}
+
 	public string GetHealthDisplay ()
 	{
 		return statHealth + "/" + statMaxHealth;

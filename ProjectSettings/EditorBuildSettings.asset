@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Transition Events/EmptyWallet (Event).unity
     guid: a5b40ad6210924d49a8f425efce69708
   - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: a7d5d1d9346c74c28b231546f81a48ba
+  - enabled: 1
     path: Assets/Scenes/Transition Events/Gym (Event).unity
     guid: 6c2eef7ac7757ce489b1a8f0664334e1
   - enabled: 1

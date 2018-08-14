@@ -102,30 +102,41 @@ public class EventController : MonoBehaviour
 				}
 				//Change Stats
 				if (playerStats [activeCharacter] != null) {
-					if (eventTexts [i].GetEventOption (i).changeHP) {
-						playerStats [activeCharacter].takeDamage (-eventTexts [i].GetEventOption (i).GetHPChange ());
-						if (eventTexts [i].GetEventOption (i).GetHPChange () > 0) {
-							print ("Player" + activeCharacter + " heal: " + eventTexts [i].GetEventOption (i).GetHPChange ());
-						} else {
-							print ("Player" + activeCharacter + " take damage: " + -eventTexts [i].GetEventOption (i).GetHPChange ());
+					print("changing Stats");
+					print ("changeMaxHP: " + eventTexts [1].GetEventOption (i).changeMaxHP);
+					if (eventTexts [1].GetEventOption (i).changeMaxHP) {
+						print ("Player maxHP set to: " + (playerStats[activeCharacter].GetMaxHealth() + eventTexts [1].GetEventOption (i).GetMaxHPChange ()).ToString());
+						playerStats [activeCharacter].SetMaxHealth (playerStats[activeCharacter].GetMaxHealth() + eventTexts [1].GetEventOption (i).GetMaxHPChange ());
+						if (playerStats [activeCharacter].GetMaxHealth () < playerStats [activeCharacter].GetHealth ()) {
+							playerStats [activeCharacter].SetHealth (playerStats [activeCharacter].GetMaxHealth ());
 						}
 					}
-					if (eventTexts [i].GetEventOption (i).changeMaxHP) {
-						playerStats [activeCharacter].SetMaxHealth (playerStats[activeCharacter].GetMaxHealth() + eventTexts [i].GetEventOption (i).GetMaxHPChange ());
+					print ("changeHP: " + eventTexts [1].GetEventOption (i).changeHP);
+					if (eventTexts [1].GetEventOption (i).changeHP) {
+						print ("changingHP");
+						playerStats [activeCharacter].takeDamage (-eventTexts [1].GetEventOption (i).GetHPChange ());
+						if (eventTexts [1].GetEventOption (i).GetHPChange () > 0) {
+							print ("Player" + activeCharacter + " heal: " + eventTexts [1].GetEventOption (i).GetHPChange ());
+						} else {
+							print ("Player" + activeCharacter + " take damage: " + -eventTexts [1].GetEventOption (i).GetHPChange ());
+						}
 					}
-					if (eventTexts [i].GetEventOption (i).changeFinesse) {
-						playerStats [activeCharacter].SetFinesse (playerStats [activeCharacter].GetFinesse () + eventTexts [i].GetEventOption (i).finesseChange);
+					print ("changeFinesse: " + eventTexts [1].GetEventOption (i).changeFinesse);
+					if (eventTexts [1].GetEventOption (i).changeFinesse) {
+						print ("Player finesse set to: " + (playerStats [activeCharacter].GetFinesse () + eventTexts [1].GetEventOption (i).finesseChange).ToString());
+						playerStats [activeCharacter].SetFinesse (playerStats [activeCharacter].GetFinesse () + eventTexts [1].GetEventOption (i).finesseChange);
 					}
-					if (eventTexts [i].GetEventOption (i).changeArmour) {
-						print ("changingArmour: +" + eventTexts [i].GetEventOption (i).armourChange);
-						playerStats [activeCharacter].SetArmour (playerStats [activeCharacter].GetArmour () + eventTexts [i].GetEventOption (i).armourChange);
+					print ("changeArmour: " + eventTexts [1].GetEventOption (i).changeArmour);
+					if (eventTexts [1].GetEventOption (i).changeArmour) {
+						print ("changingArmour: +" + eventTexts [1].GetEventOption (i).armourChange);
+						playerStats [activeCharacter].SetArmour (playerStats [activeCharacter].GetArmour () + eventTexts [1].GetEventOption (i).armourChange);
 					}
-					if (eventTexts [i].GetEventOption (i).weaponToGive != WeaponType.none) {
+					if (eventTexts [1].GetEventOption (i).weaponToGive != WeaponType.none) {
 						_weaponExchanger.gameObject.SetActive (true);
-						_weaponExchanger.SetWeaponToGive (weapons.GetWeapon(eventTexts [i].GetEventOption (i).weaponToGive));
+						_weaponExchanger.SetWeaponToGive (weapons.GetWeapon(eventTexts [1].GetEventOption (i).weaponToGive));
 						isWeaponExchangerActive = true;
 					}
-					if (eventTexts [i].GetEventOption (i).consumableToGive != ConsumableType.none) {
+					if (eventTexts [1].GetEventOption (i).consumableToGive != ConsumableType.none) {
 						//Add Item to Bag
 					}
 				}

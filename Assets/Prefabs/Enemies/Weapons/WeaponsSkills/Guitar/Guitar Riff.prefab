@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillDescription: multi-target attack | 2 Damage
   damage: 2
+  isChargable: 0
   multiHit: 1
   stunChance: 0
   finesseBoost: 0
-  skillIcon: {fileID: 114023579776994384, guid: 85e8528407b8c4b82b2c703547575802,
+  finesseBoostLength: 0
+  skillIcon: {fileID: 114221127098150020, guid: a162ebe02062a429c8b5d1d42e05fea7,
     type: 2}

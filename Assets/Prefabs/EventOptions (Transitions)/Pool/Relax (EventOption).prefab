@@ -40,9 +40,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionText: Relax
   changeHP: 0
-  HPChange: 10
+  HPChange: 0
   changeMaxHP: 0
-  maxHPChange: 10
+  maxHPChange: 0
   changeFinesse: 0
   finesseChange: 0
   changeArmour: 1

@@ -52,4 +52,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: backpack
-  sprite: {fileID: 21300000, guid: bd1dbb4d8498041df890e8e438a87b52, type: 3}
+  sprite: {fileID: 21300000, guid: 0b50efd9a83c44592af7345d9060260c, type: 3}

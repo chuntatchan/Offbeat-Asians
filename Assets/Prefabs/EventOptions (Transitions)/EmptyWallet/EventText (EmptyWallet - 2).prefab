@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb9ae9824a87da489ba77033cd9c8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  picture: {fileID: 21300000, guid: 5cd651659bcc2456caef704fce801931, type: 3}
   eventText: As you open up the wallet, some moths come out and attack you. You immediately
     drop the wallet closed. After recovering from being spooked, you take the wallet
     for yourself. The moths inside vibrates the wallet.

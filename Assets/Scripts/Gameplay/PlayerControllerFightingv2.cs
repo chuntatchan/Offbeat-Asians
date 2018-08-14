@@ -37,7 +37,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 	[SerializeField]
     private bool[] isButtonActive;
     [SerializeField]
-    private UI_Icon[] UI_Icons;
+    private UI_IconList UI_Icons;
 
     [SerializeField]
     private CharacterFightScene currentCharacter;
@@ -518,6 +518,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         {                   //PLAYERS ALL DEAD || GAME OVER
             print("Game Over");
 
+			SceneManager.LoadScene ("GameOver");
 
         }
         else
@@ -703,18 +704,18 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     {
         if (_name != "")
         {
-            for (int i = 0; i < UI_Icons.Length; i++)
+			for (int i = 0; i < UI_Icons.GetLength(); i++)
             {
-                if (UI_Icons[i].GetName() == _name)
+				if (UI_Icons.At(i).GetName() == _name)
                 {
-                    return UI_Icons[i].GetSprite();
+					return UI_Icons.At(i).GetSprite();
                 }
             }
-            return UI_Icons[0].GetSprite();
+			return UI_Icons.At(0).GetSprite();
         }
         else
         {
-            return UI_Icons[0].GetSprite();
+			return UI_Icons.At(0).GetSprite();
         }
     }
 

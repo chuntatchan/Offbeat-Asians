@@ -1,12 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/TransitionScenes/EventOptionStats.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Gameplay/CharacterFightScene.cs">
     <Files>
-      <File FileName="Assets/Scripts/Gameplay/CharacterFightScene.cs" Line="53" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/CharacterStats.cs" Line="36" Column="3" />
-      <File FileName="Assets/Scripts/UI_Icon.cs" Line="7" Column="1" />
-      <File FileName="Assets/Scripts/Gameplay/EventController.cs" Line="78" Column="1" />
-      <File FileName="Assets/Scripts/TransitionScenes/EventOptionStats.cs" Line="24" Column="41" />
+      <File FileName="Assets/Scripts/Gameplay/CharacterFightScene.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/Gameplay/CharacterStats.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI_Icon.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Gameplay/EventController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/TransitionScenes/EventOptionStats.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Gameplay/PlayerControllerFightingv2.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
