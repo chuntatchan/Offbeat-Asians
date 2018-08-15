@@ -9,6 +9,8 @@ public class EventController : MonoBehaviour
     [Header("UI")]
     [SerializeField]
     private GameObject eventOverlay;
+	[SerializeField]
+	private GameObject fadeScreen;
     [SerializeField]
     private Slider[] playerHPSliders;
     [SerializeField]
@@ -48,6 +50,7 @@ public class EventController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		StartCoroutine (fadeIn());
         if (_weaponExchanger  != null)
         {
             _weaponExchanger.gameObject.SetActive(false);
@@ -86,6 +89,31 @@ public class EventController : MonoBehaviour
         }
         setUITo(0);
     }
+
+	IEnumerator fadeIn() {
+		float a = 1f;
+		Color screenColor = fadeScreen.GetComponent<Image> ().color;
+		fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+		fadeScreen.SetActive (true);
+		while (a > 0) {
+			a -= 0.04f;
+			fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+			yield return new WaitForEndOfFrame ();
+		}
+		fadeScreen.SetActive (false);
+	}
+
+	IEnumerator fadeOut() {
+		float a = 0;
+		fadeScreen.SetActive (true);
+		Color screenColor = fadeScreen.GetComponent<Image> ().color;
+		while (a < 1) {
+			a += 0.04f;
+			fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+			yield return new WaitForEndOfFrame ();
+		}
+		levelManager.LoadNextScene ();
+	}
 
     public void onButtonClick(int i)
     {
@@ -144,7 +172,7 @@ public class EventController : MonoBehaviour
 				currentStateCounter = 2;
 			} else if (currentStateCounter == 2) {
 				//Transition to next Scene;
-				levelManager.LoadNextScene ();
+				StartCoroutine(fadeOut());
 			}
 		} else { //WeaponExchanger Is Active
 			if (i == 2) {

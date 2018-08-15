@@ -12,6 +12,8 @@ public class IntroSceneController : MonoBehaviour {
 	[SerializeField]
 	private GameObject continueButton;
 	[SerializeField]
+	private GameObject fadeOutScreen;
+	[SerializeField]
 	private LevelManager _levelManager;
 
 	// Use this for initialization
@@ -22,6 +24,23 @@ public class IntroSceneController : MonoBehaviour {
 			DontDestroyOnLoad (players[i].gameObject);
 		}
 		DontDestroyOnLoad (_levelManager.gameObject);
+	}
+
+	public void startFadeOut() {
+		StartCoroutine (fadeOut());
+	}
+
+	IEnumerator fadeOut() {
+		print ("startFadeOut");
+		float a = 0;
+		fadeOutScreen.SetActive (true);
+		Color screenColor = fadeOutScreen.GetComponent<Image> ().color;
+		while (a < 1) {
+			a += 0.04f;
+			fadeOutScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+			yield return new WaitForEndOfFrame ();
+		}
+		_levelManager.LoadNextScene ();
 	}
 
 	IEnumerator walkIn() {

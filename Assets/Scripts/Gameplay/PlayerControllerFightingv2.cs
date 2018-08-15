@@ -10,7 +10,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     [SerializeField]
     private CharacterFightScene[] allCharacters, enemies, players;
     [SerializeField]
-    private GameObject enemyLayer, BGLayer, playerLayer, continueButton;
+    private GameObject enemyLayer, BGLayer, playerLayer, continueButton, fadeScreen;
 
 	[Header("Weapon Overlay")]
     [SerializeField]
@@ -77,6 +77,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		StartCoroutine (fadeIn());
         if (GameObject.FindGameObjectWithTag("levelManager") != null)
         {
             levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
@@ -168,6 +169,31 @@ public class PlayerControllerFightingv2 : MonoBehaviour
             //Start Game (Animation Stuff?)
         }
     }
+
+	IEnumerator fadeIn() {
+		float a = 1f;
+		Color screenColor = fadeScreen.GetComponent<Image> ().color;
+		fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+		fadeScreen.SetActive (true);
+		while (a > 0) {
+			a -= 0.04f;
+			fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+			yield return new WaitForEndOfFrame ();
+		}
+		fadeScreen.SetActive (false);
+	}
+
+	IEnumerator fadeOut() {
+		float a = 0;
+		fadeScreen.SetActive (true);
+		Color screenColor = fadeScreen.GetComponent<Image> ().color;
+		while (a < 1) {
+			a += 0.04f;
+			fadeScreen.GetComponent<Image> ().color = new Color (screenColor.r, screenColor.g, screenColor.b, a);
+			yield return new WaitForEndOfFrame ();
+		}
+		levelManager.LoadNextScene ();
+	}
 
     private void resizeAllCharacters(int Size, ref CharacterFightScene[] Group)
     {
@@ -599,6 +625,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     public void continueButtonClicked()
     {
         continueButton.SetActive(false);
+		StartCoroutine (fadeOut());
         StartCoroutine(startFightingToWalkingTransition());
     }
 
