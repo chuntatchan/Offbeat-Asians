@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour {
 
     private void assignTransitionScenes()
     {
-        for (int i = 0; i < allStages.Length; i = i + 2)
+        for (int i = 0; i < allStages.Length-2; i = i + 2)
         {
             int j = Random.Range(0, transitionScenes.Count);
             allStages[i] = transitionScenes[j];

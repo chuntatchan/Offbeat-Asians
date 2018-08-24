@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1433064059793586}
+  m_RootGameObject: {fileID: 1248740477555678}
   m_IsPrefabParent: 1
---- !u!1 &1433064059793586
+--- !u!1 &1248740477555678
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4941426996600244}
-  - component: {fileID: 114337604009655042}
+  - component: {fileID: 4998577577729076}
+  - component: {fileID: 114710963715982812}
   m_Layer: 0
-  m_Name: Loud Ass Music
+  m_Name: Report Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4941426996600244
+--- !u!4 &4998577577729076
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433064059793586}
+  m_GameObject: {fileID: 1248740477555678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,23 +40,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114337604009655042
+--- !u!114 &114710963715982812
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433064059793586}
+  m_GameObject: {fileID: 1248740477555678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadb5675d753844ea9aae851b4025fa8, type: 3}
+  m_Script: {fileID: 11500000, guid: f6981b4cd82734d279f0ba90246c3c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDescription: Single target debuff | 15% stun chance | 4 Damage
-  damage: 4
-  isChargable: 0
-  multiHit: 0
-  stunChance: 15
-  finesseBoost: 0
-  finesseBoostLength: 0
-  skillIcon: {fileID: 114221127098150020, guid: a162ebe02062a429c8b5d1d42e05fea7,
-    type: 2}
+  _weapontype: 4
+  weaponDescription: '"It''s not that bad... in your perspective."'
+  weaponAbilities:
+  - {fileID: 114337604009655042, guid: ebf3032f4b6c442f99abfc2a837198cc, type: 2}
+  - {fileID: 114337604009655042, guid: 18b7a608ff757499ba81a7a93419f243, type: 2}
+  damageReflect: 0
+  weaponIconForTransition: {fileID: 0}

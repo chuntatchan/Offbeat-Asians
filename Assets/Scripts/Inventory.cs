@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
 
 	public Consumable[] consumableInventory;
+	public ItemsList itemList;
 
 	// Use this for initialization
 	void Start ()
@@ -18,6 +19,19 @@ public class Inventory : MonoBehaviour
 		for (int i = 0; i < consumableInventory.Length; i++) {
 			if (consumableInventory [i] == null) {
 				consumableInventory [i] = newConsumable;
+				return;
+			}
+		}
+	}
+
+	public void Add (ConsumableType newConsumable) {
+
+		Consumable _consumable = itemList.Find (newConsumable);
+		print (_consumable.name);
+
+		for (int i = 0; i < consumableInventory.Length; i++) {
+			if (consumableInventory [i] == null) {
+				consumableInventory [i] = _consumable;
 				return;
 			}
 		}

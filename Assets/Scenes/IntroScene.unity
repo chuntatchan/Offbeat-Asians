@@ -980,9 +980,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Player 2
-
-'
+  m_text: Niam
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -1050,10 +1048,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 197456564}
-    characterCount: 9
+    characterCount: 4
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3673,7 +3671,7 @@ MonoBehaviour:
   statFinesse: 0
   statSpeed: 0
   charaNum: 1
-  weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
+  weaponEquiped: {fileID: 114710963715982812, guid: 7ece8eb89fd814bfdaf260afdcbc549f,
     type: 2}
   hpSlider: {fileID: 1385247143}
   HPText: {fileID: 568867147}
@@ -5381,7 +5379,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1600, y: 900}
+  m_SizeDelta: {x: 1650, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1228883677
 MonoBehaviour:
@@ -5946,7 +5944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -617, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1359599096
@@ -7009,7 +7007,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Player 1
+  m_text: Hal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -7077,10 +7075,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1651348067}
-    characterCount: 8
+    characterCount: 3
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -7397,14 +7395,10 @@ MonoBehaviour:
   transitionScenes:
   - ArtRoom (Event)
   - BobaTrap (Event)
-  - Crush (Event)
   - EmptyWallet (Event)
   - Gym (Event)
   - Lunch (Event)
-  - MusicRoom (Event)
   - Pool (Event)
-  - Theatre (Event)
-  - Thief (Event)
   allStages:
   - 
   - fight_1
@@ -7416,6 +7410,7 @@ MonoBehaviour:
   - fight_4
   - 
   - Boss
+  - Ending
 --- !u!224 &1778833345
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7851,7 +7846,7 @@ MonoBehaviour:
   statFinesse: 0
   statSpeed: 0
   charaNum: 2
-  weaponEquiped: {fileID: 114710963715982812, guid: 5b076d17861aa43c28f3535e9507d940,
+  weaponEquiped: {fileID: 114710963715982812, guid: 458b37ad76fb24296b890a7013db5acb,
     type: 2}
   hpSlider: {fileID: 1955524669}
   HPText: {fileID: 511975569}
@@ -8151,6 +8146,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  itemList: {fileID: 114998041184545668, guid: 539db4b2de59a4c9db46531eec905164, type: 2}
 --- !u!4 &1967069837
 Transform:
   m_ObjectHideFlags: 0

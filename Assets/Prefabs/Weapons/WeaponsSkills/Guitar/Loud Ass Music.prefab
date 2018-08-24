@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4941426996600244}
   - component: {fileID: 114337604009655042}
   m_Layer: 0
-  m_Name: Guitar Riff
+  m_Name: Loud Ass Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,11 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadb5675d753844ea9aae851b4025fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDescription: multi-target attack | 2 Damage
-  damage: 2
+  skillDescription: 'Single target debuff | 15% stun chance '
+  damage: 4
   isChargable: 0
-  multiHit: 1
-  stunChance: 0
+  multiHit: 0
+  stunChance: 15
   finesseBoost: 0
   finesseBoostLength: 0
   skillIcon: {fileID: 114221127098150020, guid: a162ebe02062a429c8b5d1d42e05fea7,

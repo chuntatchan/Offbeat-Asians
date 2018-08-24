@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerControllerFightingv2 : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 	private GameObject overlayWeapon, overlayWeaponDetail;
 	[SerializeField]
 	private Image[] weaponButtonImage;
+	[SerializeField]
+	private TMP_Text skillName, damageNumber, descriptionText, quote;
 
 	[Header("Inventory Overlay")]
 	[SerializeField]
@@ -36,6 +39,8 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 	private Image[] buttonImage;
 	[SerializeField]
     private bool[] isButtonActive;
+	[SerializeField]
+	private bool[] isDetailButtonActive;
     [SerializeField]
     private UI_IconList UI_Icons;
 
@@ -124,6 +129,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
 
         isButtonActive = new bool[itemSlots.Length+1];
+		isDetailButtonActive = new bool[itemSlots.Length+1];
 
 
 		setUITo (0);
@@ -306,10 +312,11 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 
     public void detailButtonClicked(int i)
     {
-		if (isButtonActive [i] == false) {
+		print ("detail_btn: " + i);
+		if (isDetailButtonActive [i] == false) {
 			return;
 		} else {
-			if (currentStateCounter == 1) {
+			if (currentStateCounter == 1 || currentStateCounter == 2) {
 				if (i == 0) {
 					setUITo (i);
 				} else {
@@ -318,7 +325,20 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 					setUITo (2);
 
 					//Show Weapon Detail
+					for (int j = 0; j < overlayWeaponDetailConnector.Length; j++) {
+						overlayWeaponDetailConnector [j].SetActive (false);
+					}
+
 					overlayWeaponDetailConnector [i - 1].SetActive (true);
+					skillName.text = currentSkillToBeDealt.name;
+					damageNumber.text = currentSkillToBeDealt.getDamage ().ToString();
+					descriptionText.text = currentSkillToBeDealt.getDescription ();
+
+
+					//If Quotes ever become a thing.
+					quote.text = "";
+
+
 				}
 			} else if (currentStateCounter == 3 || currentStateCounter == 4) {
 				if (i == 0) {
@@ -330,7 +350,6 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 						currentConsumableToUse = playerInventory.At (i - 1);
 						currentConsumableInt = i - 1;
 						setUITo (4);
-
 					} else {
 						playerInventory.At (i - 1).SetTarget (currentCharacter);
 
@@ -359,10 +378,20 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 				} else {
 					currentCharacter.attackAnimation ();
 					//print ("damageDealt: " + Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()).ToString ());
-					enemies [i - 1].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
+					if (currentSkillToBeDealt.isMultiHit ()) {
+						for (int j = 0; j < enemies.Length; j++) { 
+							if (!enemies [j].isDead ()) {
+								enemies [j].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
+							}
+						}
+					} else {
+						enemies [i - 1].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
+					}
 					currentSkillToBeDealt = null;
-					if (enemies [i - 1].isDead ()) {
-						enemies [i - 1].deathAnimation ();
+					for (int j = 0; j < enemies.Length; j++) { 
+						if (enemies [j].isDead ()) {
+							enemies [i - 1].deathAnimation ();
+						}
 					}
 					startNextTurn ();
 				}
@@ -440,7 +469,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
         overlayWeaponDetail.SetActive(true);
         for (int j = 0; j < enemiesColliders.Length; j++)
         {
-            enemiesColliders[j].enabled = true;
+			if (!enemies [j].isDead ()) {
+				enemiesColliders [j].enabled = true;
+			}
         }
     }
 
@@ -450,6 +481,10 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 		print ("displayState3UI");
 		overlayWeapon.SetActive (false);
 		overlayWeaponDetail.SetActive (false);
+		for (int i = 0; i < overlayWeaponDetailConnector.Length; i++)
+		{
+			overlayWeaponDetailConnector[i].SetActive(false);
+		}
 		buttonImage[0].sprite = FindIcon("return");
 
 		overlayBag.SetActive (true);
@@ -483,18 +518,22 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     {
         if (currentStateCounter == 1) //WeaponSelect
         {
-			isButtonActive [0] = true;
+			isDetailButtonActive [0] = true;
             for (int i = 0; i < weaponButtonImage.Length; i++)
             {
                 if (weaponButtonImage[i].sprite == FindIcon("blank"))
                 {
-					isButtonActive[i+1] = false;
+					isDetailButtonActive[i+1] = false;
                 }
                 else
                 {
-                    isButtonActive[i+1] = true;
+                    isDetailButtonActive[i+1] = true;
                 }
             }
+			for (int i = 0; i < buttonImage.Length; i++) //Base
+			{
+				isButtonActive[i] = true;
+			}
         }
 		else if (currentStateCounter == 3) //ConsumableSelect
 		{
@@ -663,6 +702,10 @@ public class PlayerControllerFightingv2 : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         int playerToAtk = Random.Range(0, players.Length);
+		if (players [playerToAtk].isDead ()) {
+			playerToAtk++;
+			playerToAtk = playerToAtk % players.Length;
+		}
         
         //Damage Chargable
 
@@ -676,6 +719,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
             else
             {
                 currentCharacter.GetWeapon().weaponAbility(0).SetIsChargedUp(true);
+				currentCharacter.SetActiveTbox(true);
+				//Set Text
+				currentCharacter.GetTboxText().text = "Charging Up";
             }
         }
         else

@@ -75,6 +75,9 @@ MonoBehaviour:
   - type: 7
     consumablePrefab: {fileID: 114881735241502468, guid: 9add49b7ca01f41c189acccf04bd10b7,
       type: 2}
+  - type: 4
+    consumablePrefab: {fileID: 114881735241502468, guid: 24fa782b66959482bbc2b0458dce06e9,
+      type: 2}
   allLegendaryConsumables:
   - type: 8
     consumablePrefab: {fileID: 114881735241502468, guid: fb7b2321b3c96417e81a253387cca3d3,

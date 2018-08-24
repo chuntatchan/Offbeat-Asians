@@ -43,9 +43,11 @@ public class EventController : MonoBehaviour
 
     [Space]
 
-    [Header("LevelManager")]
+    [Header("Static")]
     [SerializeField]
     private LevelManager levelManager;
+	[SerializeField]
+	private Inventory inventory;
 
     // Use this for initialization
     void Start()
@@ -72,6 +74,9 @@ public class EventController : MonoBehaviour
         {
             levelManager = GameObject.FindGameObjectWithTag("levelManager").GetComponent<LevelManager>();
         }
+		if (GameObject.FindGameObjectWithTag ("Inventory") != null) {
+			inventory = GameObject.FindGameObjectWithTag ("Inventory").GetComponent<Inventory>();
+		}
 
         currentStateCounter = 0;
         if (GameObject.FindGameObjectWithTag("Player1") != null || GameObject.FindGameObjectWithTag("Player2") != null)
@@ -166,6 +171,8 @@ public class EventController : MonoBehaviour
 					}
 					if (eventTexts [1].GetEventOption (i).consumableToGive != ConsumableType.none) {
 						//Add Item to Bag
+						print(eventTexts [1].GetEventOption (i).consumableToGive.ToString());
+						inventory.Add(eventTexts [1].GetEventOption (i).consumableToGive);
 					}
 				}
 

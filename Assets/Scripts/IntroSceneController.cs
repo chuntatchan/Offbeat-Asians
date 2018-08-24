@@ -49,7 +49,7 @@ public class IntroSceneController : MonoBehaviour {
 			players [i].SetWalkingAnim (true);
 		}
 		while (playersLayer.transform.localPosition.x < 0) {
-			playersLayer.transform.position = new Vector3 (playersLayerStartPos.x + 0.08f, playersLayerStartPos.y, playersLayerStartPos.z);
+			playersLayer.transform.position = new Vector3 (playersLayerStartPos.x + 0.04f, playersLayerStartPos.y, playersLayerStartPos.z);
 			playersLayerStartPos = playersLayer.transform.position;
 			yield return new WaitForEndOfFrame ();
 		}

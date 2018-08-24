@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 22786737e983c4d34a8d4953ddfcf84a
+  - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: 89f2ca7c75ab3457c94be4a241c8e8fb
   - enabled: 1
@@ -56,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Transition Events/Thief (Event).unity
     guid: 023bc170e3f7e421fa125cd0ae18540a
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: bf339e9d489e7f8468a7a546b9acc283
   m_configObjects: {}

@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1248740477555678}
+  m_RootGameObject: {fileID: 1433064059793586}
   m_IsPrefabParent: 1
---- !u!1 &1248740477555678
+--- !u!1 &1433064059793586
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4998577577729076}
-  - component: {fileID: 114710963715982812}
+  - component: {fileID: 4941426996600244}
+  - component: {fileID: 114337604009655042}
   m_Layer: 0
-  m_Name: Guitar
+  m_Name: Hide yo grades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4998577577729076
+--- !u!4 &4941426996600244
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248740477555678}
+  m_GameObject: {fileID: 1433064059793586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,20 +40,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114710963715982812
+--- !u!114 &114337604009655042
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1248740477555678}
+  m_GameObject: {fileID: 1433064059793586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6981b4cd82734d279f0ba90246c3c96, type: 3}
+  m_Script: {fileID: 11500000, guid: cadb5675d753844ea9aae851b4025fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Guitar
-  weaponType: Guitar
-  weaponAbilities:
-  - {fileID: 114337604009655042, guid: e4b6311363a794736b8af38e033ec176, type: 2}
-  - {fileID: 114337604009655042, guid: 7c44cbb82ff7b4a5c94f74f17ccce76e, type: 2}
-  Wtype: 3
+  skillDescription: You're thinking of some hot fire to spit.
+  damage: 0
+  isChargable: 0
+  multiHit: 0
+  stunChance: 0
+  finesseBoost: 15
+  finesseBoostLength: 3
+  skillIcon: {fileID: 114221127098150020, guid: db8e3937e41fa4c5ba741f9a88e31917,
+    type: 2}

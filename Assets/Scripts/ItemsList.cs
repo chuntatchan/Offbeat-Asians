@@ -21,4 +21,14 @@ public class ItemsList : MonoBehaviour {
 		public Consumable consumablePrefab;
 	}
 
+	public Consumable Find(ConsumableType type) {
+		for (int i = 0; i < allConsumables.Length; i++) {
+			if (allConsumables [i].type == type) {
+				return allConsumables [i].consumablePrefab;
+			}
+		}
+		print ("Couldn't find type.");
+		return null;
+	}
+
 }
