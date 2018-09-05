@@ -1819,6 +1819,8 @@ MonoBehaviour:
   weaponToGive: {fileID: 0}
   consumableToGive: {fileID: 0}
   allItems: {fileID: 114998041184545668, guid: 539db4b2de59a4c9db46531eec905164, type: 2}
+  soundList: {fileID: 114927042882489128, guid: d78ac1e8f93fb41e99d0c252f4962ea2,
+    type: 2}
 --- !u!1 &84064005
 GameObject:
   m_ObjectHideFlags: 0

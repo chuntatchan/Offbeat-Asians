@@ -7397,6 +7397,7 @@ MonoBehaviour:
   - {fileID: 114416049741484136, guid: 82a17fdc8e4f94b46960a548e9678d59, type: 2}
   - {fileID: 114416049741484136, guid: 318ba1d76cef9fc43bac92e339232dd8, type: 2}
   levelManager: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &1266940764
 GameObject:
   m_ObjectHideFlags: 0
@@ -8379,7 +8380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -9447,14 +9448,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.42352942, g: 0.42352942, b: 0.42352942, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c96a753808ca540adb9e60cebee3fe16, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

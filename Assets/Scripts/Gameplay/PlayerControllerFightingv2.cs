@@ -78,6 +78,11 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 	[SerializeField]
 	private ItemsList allItems;
 
+	[Space]
+
+	[Header("Audio Stuff")]
+	[SerializeField]
+	private SoundList soundList;
 
     // Use this for initialization
     void Start()
@@ -316,6 +321,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 		if (isDetailButtonActive [i] == false) {
 			return;
 		} else {
+			AudioSource.PlayClipAtPoint (soundList.FindSound("click"), new Vector3(0,0,0));
 			if (currentStateCounter == 1 || currentStateCounter == 2) {
 				if (i == 0) {
 					setUITo (i);
@@ -354,6 +360,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 						playerInventory.At (i - 1).SetTarget (currentCharacter);
 
 						playerInventory.At (i - 1).Use ();
+						if (playerInventory.At (i - 1).GetHPChange() > 0) {
+							AudioSource.PlayClipAtPoint (soundList.FindSound("heal"), new Vector3(0,0,0));
+						}
 						if (!playerInventory.At (i - 1).hasUsesLeft ()) {
 							playerInventory.Remove (i-1);
 						}
@@ -387,6 +396,9 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 					} else {
 						enemies [i - 1].takeDamage (Mathf.CeilToInt (currentSkillToBeDealt.getDamage () * currentCharacter.GetDamageMultiplier ()));
 					}
+
+					AudioSource.PlayClipAtPoint (soundList.FindSound("hit"), new Vector3(0,0,0));
+
 					currentSkillToBeDealt = null;
 					for (int j = 0; j < enemies.Length; j++) { 
 						if (enemies [j].isDead ()) {
@@ -398,6 +410,7 @@ public class PlayerControllerFightingv2 : MonoBehaviour
 			} else if (currentStateCounter == 4) {
 				currentConsumableToUse.SetTarget (enemies[i - 1]);
 				currentConsumableToUse.Use ();
+				AudioSource.PlayClipAtPoint (soundList.FindSound("itemUse"), new Vector3(0,0,0));
 				if (!currentConsumableToUse.hasUsesLeft ()) {
 					playerInventory.Remove (currentConsumableInt);
 				}

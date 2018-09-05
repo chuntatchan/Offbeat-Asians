@@ -77,7 +77,7 @@ public class Consumable : MonoBehaviour {
 		return (usesLeft > 0);
 	}
 
-	/*
+
 	public int GetHPChange() {
 		return HPChange;
 	}
@@ -109,7 +109,7 @@ public class Consumable : MonoBehaviour {
 	public float GetDamageReductionMultiplier() {
 		return damageReductionMultiplier;
 	}
-	*/
+
 
 
 

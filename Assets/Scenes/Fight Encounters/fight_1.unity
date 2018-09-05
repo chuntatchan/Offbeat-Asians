@@ -6125,6 +6125,8 @@ MonoBehaviour:
   weaponToGive: {fileID: 0}
   consumableToGive: {fileID: 0}
   allItems: {fileID: 114998041184545668, guid: 539db4b2de59a4c9db46531eec905164, type: 2}
+  soundList: {fileID: 114927042882489128, guid: d78ac1e8f93fb41e99d0c252f4962ea2,
+    type: 2}
 --- !u!1 &482752825
 GameObject:
   m_ObjectHideFlags: 0
@@ -15669,7 +15671,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1285745193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.0496225, y: 2.0332685, z: -99.99911}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1306680753}
@@ -16121,7 +16123,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1306680752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0496225, y: -1.0332685, z: 89.99911}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1285745197}
